@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <title>Higuaifan</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../js/jquery.js"></script>
+    <script src="../js/index.js"></script>
+    <link href="../font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<style>
+    .right{width: 40px;position:absolute;z-index: 9;height: 16px;overflow: hidden;}
+    .hide{width:20px;height:16px;position:absolute;z-index: 10;}
+    .font{margin-left: 20px;width:14px;height: 16px;line-height: 16px;}
+    .array{font:normal normal normal 14px/1 FontAwesome;}
+    .array::before{content:"\f104";width:14px;height: 14px;display:inline-block;}
+    .right:hover{
+        height:52px;
+        transition: height 1s;
+        -moz-transition: height 1s; /* Firefox 4 */
+        -webkit-transition: height 1s; /* Safari 和 Chrome */
+        -o-transition: height 1s; /* Opera */ 
+    }
+    .right:hover > .font{
+        transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        transition: transform 0.5s;
+        -moz-transition: -moz-transform 0.5s;
+        -webkit-transition: -webkit-transform 0.5s; 
+        -o-transition: -o-transform 0.5s; 
+        }
+    .right:hover > .control{
+        opacity:1;         
+        transition: opacity 1s;
+        -moz-transition: opacity 1s; /* Firefox 4 */
+        -webkit-transition: opacity 1s; /* Safari 和 Chrome */
+        -o-transition: opacity 1s; /* Opera */ 
+    }
+    .control{opacity:0;}
+    .control span{display: block;}
+</style>
+
+<body>
+<div class="parent">
+    <div class="hide"></div>
+    <div class="right">
+        <div class="font"><i class="array"></i></div>
+        <div class="control" >
+            <span class="change">修改</span>
+            <span class="delete">删除</span>
+        </div>
+    </div>
+</div>
+    
+
+</body>
+</html> 

@@ -10,51 +10,28 @@
 </head>
 
 <style>
-    .right{width: 40px;position:absolute;z-index: 9;height: 16px;overflow: hidden;}
-    .hide{width:20px;height:16px;position:absolute;z-index: 10;}
-    .font{margin-left: 20px;width:14px;height: 16px;line-height: 16px;}
-    .array{font:normal normal normal 14px/1 FontAwesome;}
-    .array::before{content:"\f104";width:14px;height: 14px;display:inline-block;}
-    .right:hover{
-        height:52px;
-        transition: height 1s;
-        -moz-transition: height 1s; /* Firefox 4 */
-        -webkit-transition: height 1s; /* Safari 和 Chrome */
-        -o-transition: height 1s; /* Opera */ 
-    }
-    .right:hover > .font{
-        transform: rotate(-90deg);
-        -o-transform: rotate(-90deg);
-        -webkit-transform: rotate(-90deg);
-        -moz-transform: rotate(-90deg);
-        transition: transform 0.5s;
-        -moz-transition: -moz-transform 0.5s;
-        -webkit-transition: -webkit-transform 0.5s; 
-        -o-transition: -o-transform 0.5s; 
-        }
-    .right:hover > .control{
-        opacity:1;         
-        transition: opacity 1s;
-        -moz-transition: opacity 1s; /* Firefox 4 */
-        -webkit-transition: opacity 1s; /* Safari 和 Chrome */
-        -o-transition: opacity 1s; /* Opera */ 
-    }
-    .control{opacity:0;}
-    .control span{display: block;}
+    .parent{background-color:#aaa;outline:0;}
+    .toolbar{display: none;}
+    .parent:focus >.toolbar{display: block;}
+    #textarea:focus +.toolbar{display: block;}
 </style>
 
 <body>
-<div class="parent">
-    <div class="hide"></div>
-    <div class="right">
-        <div class="font"><i class="array"></i></div>
-        <div class="control" >
-            <span class="change">修改</span>
-            <span class="delete">删除</span>
-        </div>
+
+
+
+<div class="parent" tabindex="0" hidefocus="true">
+    <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+    <div class="toolbar">
+        <span>share</span>
     </div>
 </div>
     
 
 </body>
 </html> 
+<script>
+    $(".toolbar span").click(function(){
+        console.log("adflajdlfkjaldfajksl");
+    })
+</script>

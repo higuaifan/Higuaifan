@@ -10,26 +10,63 @@
 </head>
 
 <style>
-    .parent{background-color:#aaa;outline:0;}
-    .toolbar{display: none;}
-    .parent:focus >.toolbar{display: block;}
-    #textarea:focus +.toolbar{display: block;}
+    #circle{width:400px;height:400px;}
+    .ninty{position:absolute;top:200px;left:200px;padding-left:80px;transform-origin:left;}
+    .language{   
+        transform:rotate(90deg);
+        -ms-transform:rotate(90deg); 	/* IE 9 */
+        -moz-transform:rotate(90deg); 	/* Firefox */
+        -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+        -o-transform:rotate(90deg); 	/* Opera */}
+    #l-1{transform:rotate(72deg);
+        -ms-transform:rotate(72deg); 	/* IE 9 */
+        -moz-transform:rotate(72deg); 	/* Firefox */
+        -webkit-transform:rotate(72deg); /* Safari 和 Chrome */
+        -o-transform:rotate(72deg); 	/* Opera */}
+    #l-2{transform:rotate(144deg);
+        -ms-transform:rotate(144deg); 	/* IE 9 */
+        -moz-transform:rotate(144deg); 	/* Firefox */
+        -webkit-transform:rotate(144deg); /* Safari 和 Chrome */
+        -o-transform:rotate(144deg); 	/* Opera */}
+    #l-3{transform:rotate(216deg);
+        -ms-transform:rotate(216deg); 	/* IE 9 */
+        -moz-transform:rotate(216deg); 	/* Firefox */
+        -webkit-transform:rotate(216deg); /* Safari 和 Chrome */
+        -o-transform:rotate(216deg); 	/* Opera */}
+    #l-4{transform:rotate(288deg);
+        -ms-transform:rotate(288deg); 	/* IE 9 */
+        -moz-transform:rotate(288deg); 	/* Firefox */
+        -webkit-transform:rotate(288deg); /* Safari 和 Chrome */
+        -o-transform:rotate(288deg); 	/* Opera */}
+ 
 </style>
 
 <body>
 
 
-
-<div class="parent" tabindex="0" hidefocus="true">
-    <textarea name="" id="textarea" cols="30" rows="10"></textarea>
-    <div class="toolbar">
-        <span>share</span>
+    <div id="circle">
+        <div class="ninty" id="l-1">
+            <div class="language" >Python</div>
+        </div>
+        <div class="ninty" id="l-2">
+            <div class="language" >PHP</div>
+        </div>
+        <div class="ninty" id="l-3">
+            <div class="language" >C#</div>
+        </div>
+        <div class="ninty" id="l-4">
+            <div class="language" >Java</div>
+        </div>
+        <div class="ninty" id="l-5">
+            <div class="language" >Html</div>
+        </div>
     </div>
-</div>
+
     
 
 </body>
 </html> 
+
 <script>
     $(".toolbar span").click(function(){
         console.log("adflajdlfkjaldfajksl");

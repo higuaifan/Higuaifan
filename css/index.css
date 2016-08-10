@@ -1,14 +1,54 @@
-html{height: 100%;margin: 0px;border:0px;}
+.language {
+  transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -o-transform: rotate(90deg); }
 
-body{
-    margin: 0px;
-    height: 100%;
-}
+#l-5 {
+  transform: rotate(260deg);
+  -ms-transform: rotate(260deg);
+  -moz-transform: rotate(260deg);
+  -webkit-transform: rotate(260deg);
+  -o-transform: rotate(260deg); }
 
-#main{
-    height: 100%;
-}
+#l-4 {
+  transform: rotate(240deg);
+  -ms-transform: rotate(240deg);
+  -moz-transform: rotate(240deg);
+  -webkit-transform: rotate(240deg);
+  -o-transform: rotate(240deg); }
 
-a:hover{
-    cursor: move;
-}
+#l-3 {
+  transform: rotate(200deg);
+  -ms-transform: rotate(200deg);
+  -moz-transform: rotate(200deg);
+  -webkit-transform: rotate(200deg);
+  -o-transform: rotate(200deg); }
+
+#l-2 {
+  transform: rotate(100deg);
+  -ms-transform: rotate(100deg);
+  -moz-transform: rotate(100deg);
+  -webkit-transform: rotate(100deg);
+  -o-transform: rotate(100deg); }
+
+#l-1 {
+  transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -o-transform: rotate(0deg); }
+
+#circle {
+  width: 400px;
+  height: 400px; }
+
+.ninty {
+  position: absolute;
+  top: 200px;
+  left: 200px;
+  padding-left: 80px;
+  transform-origin: left; }
+
+/*# sourceMappingURL=index.css.map */

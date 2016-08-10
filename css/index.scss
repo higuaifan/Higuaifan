@@ -1,0 +1,20 @@
+@mixin transform($deg:0deg){
+    transform:rotate($deg);
+    -ms-transform:rotate($deg); 	
+    -moz-transform:rotate($deg); 	
+    -webkit-transform:rotate($deg); 
+    -o-transform:rotate($deg); 	
+}
+
+.language{@include transform(90deg);}
+
+$i:5;
+$deglist: 0deg 100deg 200deg 240deg 260deg;
+
+@while $i>0{
+    #l-#{$i}{@include transform(nth($deglist,$i));}
+    $i:$i - 1;
+}
+
+    #circle{width:400px;height:400px;}
+    .ninty{position:absolute;top:200px;left:200px;padding-left:80px;transform-origin:left;}

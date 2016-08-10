@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>    
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div id="circle"></div>
+    <script type="text/babel">
+
+    var maps=['Python','Html','Java','PHP','C#'];
+    var nums=[10,10,10,4,2];
+
+    var arr=[];
+
+    var Language=React.createClass({
+        render:function(){
+            return <div className="ninty" id={this.props.number}>
+                        <div className="language" >{this.props.name}</div>
+                    </div>;
+        }
+    });
+
+    var Doms=React.createClass({
+        render:function(){
+            console.log(maps[1]);
+            return <Language name={maps[1]} number={"l-1"} />;
+        }
+    });
+
+
+    ReactDOM.render(
+        <div>
+            <Doms />
+            <Language name="Html" number="l-2" />
+            <Language name="Java" number="l-3" />
+        </div>,
+        document.getElementById('circle')
+    );
+    </script>
+</body>
+</html>

@@ -12,26 +12,29 @@
 
 <body>
 
+    <div id="circle"></div>
 
-    <div id="circle">
-        <div class="ninty" id="l-1">
-            <div class="language" >Python</div>
-        </div>
-        <div class="ninty" id="l-2">
-            <div class="language" >PHP</div>
-        </div>
-        <div class="ninty" id="l-3">
-            <div class="language" >C#</div>
-        </div>
-        <div class="ninty" id="l-4">
-            <div class="language" >Java</div>
-        </div>
-        <div class="ninty" id="l-5">
-            <div class="language" >Html</div>
-        </div>
+    <div id="tree">
+        <div class="line" id="line-1"></div>
+        <div class="handle" id="handle-1"><div class="language" >Python</div></div>
+        <div class="line" id="line-2"></div>
+        <div class="handle" id="handle-2"><div class="language">PHP</div></div>
+        <div class="line" id="line-3"></div>
+        <div class="handle" id="handle-3"><div class="language">C#</div></div>
+        <div class="line" id="line-4"></div>
+        <div class="handle" id="handle-4"><div class="language">Java</div></div>
+        <div class="line" id="line-5"></div>
+        <div class="handle" id="handle-5"><div class="language">Html</div></div>
     </div>
 
     
 
 </body>
 </html> 
+<script>
+
+var html = document.querySelector('html');
+var rem = html.offsetWidth/22;
+html.style.fontSize = rem + "px";
+
+</script>

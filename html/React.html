@@ -11,36 +11,39 @@
 <body>
     <div id="circle"></div>
     <script type="text/babel">
-
     var maps=['Python','Html','Java','PHP','C#'];
     var nums=[10,10,10,4,2];
-
-    var arr=[];
-
     var Language=React.createClass({
         render:function(){
-            return <div className="ninty" id={this.props.number}>
+            return <div className="handle" id={this.props.number}>
                         <div className="language" >{this.props.name}</div>
                     </div>;
         }
     });
 
+    var Line=React.createClass({
+        render:function(){
+            return <div className="line" id={this.props.linenumber}></div>;
+        }
+    });
+
     var Doms=React.createClass({
         render:function(){
-            console.log(maps[1]);
-            return <Language name={maps[1]} number={"l-1"} />;
+            var i=0;
+            return <div>
+                {maps.map(function(){
+                    return <Language name={maps[i]} number={"l-"+(++i)} />;
+                })}
+            </div>;
         }
     });
 
 
     ReactDOM.render(
-        <div>
-            <Doms />
-            <Language name="Html" number="l-2" />
-            <Language name="Java" number="l-3" />
-        </div>,
+        <Doms  />,
         document.getElementById('circle')
     );
+   
     </script>
 </body>
 </html>

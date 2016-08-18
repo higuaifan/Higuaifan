@@ -563,7 +563,7 @@ label.error { display: none !important; }
 
 .tags, .archive, .tweet { float: left; margin-right: 27px; width: 195px; }
 
-.tags a:link, .tags a:visited { background: url("img/patterns/hash.png") repeat scroll left top rgba(0, 0, 0, 0.01); color: #666; border-radius: 4px 4px 4px 4px; -moz-border-radius: 4px 4px 4px 4px; -webkit-border-radius: 4px 4px 4px 4px; box-shadow: 0 1px 1px #C7C7C7; -webkit-box-shadow:  0 1px 1px #C7C7C7; -moz-box-shadow:  0 1px 1px #C7C7C7; behavior: url(js/PIE.htc); display: inline-block; margin-bottom: 3px; padding: 2px 6px; text-shadow: 0 1px 1px #FFFFFF; }
+.tags a:link, .tags a:visited,#confirm,#cancel,#changepwd { background: url("img/patterns/hash.png") repeat scroll left top rgba(0, 0, 0, 0.01); color: #666; border-radius: 4px 4px 4px 4px; -moz-border-radius: 4px 4px 4px 4px; -webkit-border-radius: 4px 4px 4px 4px; box-shadow: 0 1px 1px #C7C7C7; -webkit-box-shadow:  0 1px 1px #C7C7C7; -moz-box-shadow:  0 1px 1px #C7C7C7; behavior: url(js/PIE.htc); display: inline-block; margin-bottom: 3px; padding: 2px 6px; text-shadow: 0 1px 1px #FFFFFF; }
 
 .tags a:hover { background: none repeat scroll 0 0 #666; color: #FFFFFF; text-shadow: 0 0 0 #FFFFFF; }
 

@@ -1,7 +1,0 @@
-rootProject.name = 'ziniuxiaozhu'
-include 'common'
-include 'model'
-include 'service'
-include 'webapp'
-include 'control'
-

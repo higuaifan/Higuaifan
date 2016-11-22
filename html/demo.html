@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #back{
+            background:#c1c1c1;
+            border-radius:2px;
+            width:108px;
+            position:absolute;
+            z-index:-2;
+        }
+        #a{
+            width:47px;
+        }
+
+        .b{
+        }
+        .a:after{
+            content:"";
+            background-color:white;
+            width:47px;
+            height:20px;
+            display:inline-block;
+            position:absolute;
+            z-index:-1;
+            left:0;
+            animation:hide 0.4s;
+        }
+        #select:after{
+            left:47px ;
+            animation:show 0.4s;
+        }
+
+        @keyframes show{
+            0% {left:0 ;}
+            70% {left:49px ;}
+            100% {left:47px ;}
+        }
+        @keyframes hide{
+            0% {left:47px ;}
+            70% {left:-2px ;}
+            100% {left:0px ;}
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <div id="back">
+        <label for="" class="a" onclick="removeclass()">左边</label>
+        <label for="" class="b" onclick="addclass()">右边</label>
+    </div>
+</body>
+</html>
+
+<script>
+    function addclass(){
+        document.getElementsByClassName('a')[0].setAttribute('id','select');
+    }
+    function removeclass(){
+        document.getElementsByClassName('a')[0].removeAttribute('id');
+    }
+</script>

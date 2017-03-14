@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/ui/Semantic/semantic.css">
+    <link rel="stylesheet" href="/ui/SweetAlert/sweetalert.css">
+    <script src="/plugin/jquery-3.1.1.min.js"></script>
+    <script src="/ui/Semantic/semantic.min.js"></script>
+    <script src="/ui/SweetAlert/sweetalert.min.js"></script>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .main {
+            margin: auto;
+            width: 90vh;
+        }
+
+        .main > div {
+            margin-top: 20px;
+        }
+
+        input {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="student">
+        <table class="ui celled striped table" id="studentTable">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>个人信息</th>
+                <th>密码</th>
+                <th>联系电话</th>
+                <th>所属部门</th>
+                <th style="line-height: 36px;">
+                    操作
+                    <button class="ui icon red button" style="float:right;" id="add">
+                        <i class="plus icon"></i>
+                    </button>
+                </th>
+            </tr>
+            </thead>
+            <tbody id="studentTbody">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="rating">
+        <table class="ui single line table">
+            <thead>
+            <tr>
+                <th>用户</th>
+                <th>评分</th>
+            </tr>
+            </thead>
+            <tbody id="rateTbody">
+
+
+            </tbody>
+        </table>
+        <button class="ui primary button" id="saveRate">
+            Save
+        </button>
+    </div>
+
+</div>
+</body>
+</html>
+<script>
+
+
+    var department;
+
+    var getDepartment = function () {
+        $.get("/department/index", function (data) {
+            department = data;
+        });
+    };
+    var makeDepartmentList = function (autoDepartment, id) {
+        var auto = autoDepartment || '选择部门';
+        var autoId = id || '';
+        var div = document.createElement('div');
+        $(div).addClass('ui').addClass('dropdown').addClass('selection');
+        var html =
+            '<input type="hidden" name="gender">' +
+            '<i class="dropdown icon"></i>' +
+            '<div class="default text" data-id="' + autoId + '">' + auto + '</div>' +
+            '<div class="menu">';
+
+        for (var i = 0; i < department.length; i++) {
+            var d = department[i];
+            html += '<div class="item" data-value="' + d.id + '">' + d.department + '</div>';
+        }
+
+        html += '</div>';
+        div.innerHTML = html;
+        return div;
+    };
+
+    getDepartment();
+
+
+    var getStars = function (dom) {
+        return dom.children('.active').length;
+    };
+
+    $("#add").click(function () {
+        if ($(".createTr").length < 1) {
+            $("#studentTable").append(createTr());
+            $('.ui.dropdown').dropdown();
+            console.log($('.ui.dropdown'));
+        }
+    });
+
+    var createTr = function () {
+        var tr = document.createElement('tr');
+        tr.className = 'createTr';
+        tr.innerHTML = '    <td>' +
+            '        <div class="ui input">' +
+            '        </div>' +
+            '    </td>' +
+            '    <td>' +
+            '        <div class="ui input">' +
+            '            <input type="text">' +
+            '        </div>' +
+            '        <div class="ui input">' +
+            '            <input type="text">' +
+            '        </div>' +
+            '    </td>' +
+            '    <td>' +
+            '        <div class="ui input">' +
+            '            <input type="text">' +
+            '        </div>' +
+            '    </td>' +
+            '    <td>' +
+            '        <div class="ui input">' +
+            '            <input type="text">' +
+            '        </div>' +
+            '    </td>' +
+            '    <td class="chooseBox">' +
+            '    </td>' +
+            '    <td>' +
+            '        <div class="ui buttons">' +
+            '            <button class="ui positive button active">确定</button>' +
+            '            <div class="or"></div>' +
+            '            <button class="ui button cancelButton">取消</button>' +
+            '        </div>' +
+            '    </td>';
+        $(tr).find('.chooseBox')[0].append(makeDepartmentList());
+
+        return tr;
+
+    };
+
+    var b = $("body");
+
+    b.on('click', '.cancelButton', function () {
+        $(this).parents('tr')[0].remove();
+    });
+
+    $.get("/student/index", function (data) {
+        for (var d in data) {
+            $("#studentTbody").append(userTable(data[d]));
+        }
+    });
+
+    var userTable = function (data) {
+        return '<tr>' +
+            '        <td>' + data.id + '</td>' +
+            '        <td>' +
+            '           <h4 class="ui image header">' +
+            '               <img src="' + data.pic + '" class="ui mini rounded image">' +
+            '               <div class="content">' +
+            '                   <div class="editText">' + data.real_name + '</div>' +
+            '                   <div class="sub header editText">' + data.user_name + '</div>' +
+            '               </div>' +
+            '           </h4>' +
+            '        </td>' +
+            '        <td class="editText">' +
+            '           ' + data.password +
+            '        </td>' +
+            '        <td class="editText">' +
+            '            ' + data.phone +
+            '        </td>' +
+            '        <td class="listText" data-id="' + data.departmentId + '">' +
+            '            ' + data.department +
+            '        </td>' +
+            '        <td>' +
+            '           <div class="ui buttons">' +
+            '               <button class="ui positive button active edit">编辑</button>' +
+            '               <div class="or"></div>' +
+            '               <button class="ui button">删除</button>' +
+            '           </div>' +
+            '        </td>' +
+            '    </tr>'
+    };
+
+
+    b.on('click', '.edit', function () {
+        var tr = $(this).parents('tr');
+        var text = tr.find('.editText');
+        $(this).html('保存').addClass('save').removeClass('edit');
+
+        for (var i = 0; i < text.length; i++) {
+            var b = text[i];
+            var html = b.innerHTML.replace(/ /g, '');
+            b.innerHTML = '<div class="ui input saveText"><input type="text" value="' + html + '"></div>';
+        }
+
+        var list = $(tr).find('.listText')[0];
+        var id = $(list)[0].getAttribute('data-id');
+        html = $(list).html();
+        $(list).html(makeDepartmentList(html, id));
+        $('.ui.dropdown').dropdown({
+            metadata: {
+                defaultText: html,
+                defaultValue: id
+            }
+        });
+    });
+
+    b.on('click', '.save', function () {
+        var tr = $(this).parents('tr');
+        var img = tr.find('img')[0].getAttribute('src');
+        var text = tr.find('.saveText');
+        var arr = [];
+        var id = tr.children().eq(0).html();
+        $(this).html('编辑').addClass('edit').removeClass('save');
+        for (var i = 0; i < text.length; i++) {
+            var b = text[i];
+            var p = $(b).parent();
+            var val = $(b).children().eq(0).val();
+            arr.push(val);
+            p.html(val);
+        }
+
+        var select = $(tr).find(".selection");
+        var autoId = select.parent()[0].getAttribute('data-id');
+        var departmentId = select.find('input').val() || autoId;
+        var td = select.find('input').parents('td');
+        text = select.find('.text').html();
+        td[0].innerHTML = text;
+        td[0].setAttribute('data-id', departmentId);
+
+        var data = {
+            'id': id,
+            'real_name': arr[0],
+            'user_name': arr[1],
+            'password': arr[2],
+            'phone': arr[3],
+            'department': departmentId,
+            'pic': img
+        };
+
+        console.log(data);
+
+        $.post("/student/update", data, function (res) {
+            if (res) {
+                swal('更新成功');
+            } else {
+                swal('更新失败');
+            }
+        });
+
+    });
+
+
+    //    ------评分部分
+
+    $.get('/student/index', function (data) {
+        for (var i = 0; i < data.length; i++) {
+            $('#rateTbody').append(appendTr(data[i]));
+        }
+        $('.ui.rating').rating({
+            initialRating: 0,
+            maxRating: 5
+        });
+    });
+
+    var appendTr = function (data) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td data-id="' + data.id + '">' +
+            '<h4 class="ui image header">' +
+            '<img src="' + data.pic + '" class="ui mini rounded image">' +
+            '<div class="content">' +
+            data.real_name +
+            '<div class="sub header">' + data.user_name + '</div>' +
+            '</div>' +
+            '</h4>' +
+            '</td>' +
+            '<td>' +
+            '<div class="ui rating"></div>' +
+            '</td>';
+        return tr;
+    };
+
+    $("#saveRate").click(function () {
+        var list = $('.ui.rating');
+        for (var i = 0; i < list.length; i++) {
+            var id = $(list[i]).parent().prev()[0].getAttribute('data-id');
+            var obj = {rater: id-0, score: getStars($(list[i]))};
+            console.log(obj);
+            $.ajax({
+                type:'post',
+                url: '/rate/insert',
+                data: obj,
+                async : false,
+                success: function (res) {
+                    console.log(res);
+                }
+            });
+        }
+
+
+    });
+
+</script>
+
+

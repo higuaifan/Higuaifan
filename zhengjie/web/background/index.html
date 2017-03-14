@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理界面</title>
+    <link rel="stylesheet" href="../plugin/main.css">
+    <link rel="stylesheet" href="../ui/Semantic/semantic.min.css">
+    <link rel="stylesheet" href="../ui/Datepicker/calendar.min.css">
+    <link rel="stylesheet" href="../ui/SweetAlert/sweetalert.css">
+    <style>
+        body {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="left">
+    <ul>
+        <li>成员管理</li>
+        <li>绩效分数查看</li>
+        <li>绩效标准管理</li>
+    </ul>
+</div>
+<div id="right">
+
+    <div id="performance">
+        <ul id="ruleUi">
+
+        </ul>
+        <div class="add">
+            <div id="ruleAdd">+</div>
+            <input type="text" id="rulesInput">
+            <div id="ruleOk">确定</div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>
+
+<script src="../plugin/jquery-1.11.1.min.js"></script>
+<script src="../ui/Datepicker/calendar.min.js"></script>
+<script src="../ui/Semantic/semantic.min.js"></script>
+<script src="../ui/SweetAlert/sweetalert.min.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+        $.get("/rules/index", function (data) {
+            for(var i in data){
+                generateLi(data[i]);
+            }
+        });
+    });
+
+
+    $("#ruleAdd").click(function () {
+        $("#rulesInput").css('display', 'inline-block');
+        $("#ruleOk").css('display', 'inline-block');
+    });
+    $("#ruleOk").click(function () {
+        //todo ajax
+
+
+
+
+        var data={'rule':$("#rulesInput").val()};
+
+        $.post("/rules/insert",data,function(res){
+            $.get("/rules/index", function (data) {
+                $("#ruleUi")[0].innerHTML="";
+                for(var i in data){
+                    generateLi(data[i]);
+                }
+            });
+        });
+
+
+
+        $("#rulesInput").hide();
+        $("#ruleOk").hide();
+    });
+
+    $("#ruleUi").on('click','.delRule',function () {
+        var span=$(this).prev().prev()[0];
+        var id=span.getAttribute('data-id');
+        var data={'id':id};
+        $.post("/rules/delete",data,function(res){
+            swal('删除成功');
+            $.get("/rules/index", function (data) {
+                $("#ruleUi")[0].innerHTML="";
+                for(var i in data){
+                    generateLi(data[i]);
+                }
+            });
+        });
+    });
+
+
+
+    var generateLi = function (data) {
+        var li =document.createElement('li');
+        var span=' <span data-id="'+data.id+'">'+data.id+'.'+data.rule+'</span>';
+        var control=' <div class="editRule">修改</div> <div class="delRule">删除</div>';
+        li.innerHTML=span+control;
+        $("#ruleUi").append(li);
+    }
+
+
+</script>
+
+
+

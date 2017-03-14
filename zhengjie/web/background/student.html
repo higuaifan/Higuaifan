@@ -1,0 +1,43 @@
+<div>
+
+
+    <div class="student">
+        <div class="input user">higuaifan</div>
+        <div class="input name">张怿凡</div>
+        <div class="input pwd">123456</div>
+        <div class="input phone">18667368800</div>
+        <div class="input department">纪检</div>
+        <div class="tool">
+            <div class="edit">编辑</div>
+            <div class="del">删除</div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<script>
+    $(".edit").click(function () {
+        var student = $(this).parents('.student');
+        var div = student.children('.input');
+        if('编辑'===this.innerHTML){
+            $(this).html('确定');
+            for (var i = 0; i < div.length; i++) {
+                var input = div[i];
+                input.innerHTML = '<input type="text" value="' + input.innerHTML + '">';
+            }
+        }else{
+            //todo ajax
+
+            $(this).html('编辑');
+            for (var i = 0; i < div.length; i++) {
+                var input = div[i];
+                var val=$(input).children('input').val();
+                input.innerHTML=val;
+            }
+        }
+    });
+
+</script>

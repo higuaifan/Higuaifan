@@ -3,10 +3,6 @@ package com.demo.controller;
 import com.demo.common.model.Rate;
 import com.jfinal.core.Controller;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
 /**
  * Created by Higuaifan on 2017/3/15.
  * 大道五十,代码四九,bug遁一.
@@ -32,7 +28,9 @@ public class rateController extends Controller {
         int id = getParaToInt("id");
         int rater = getParaToInt("rater");
         int score = getParaToInt("score");
-        renderJson(rate.updateRate(id,rater,score));
+        int userId = getSessionAttr("userId");
+        // TODO: 2017/3/15 检查user type 是管理员还是用户
+        renderJson(rate.updateRate(id,rater,score,userId));
     }
 
     public void delete(){

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登陆</title>
+
+    <link rel="stylesheet" href="../ui/Semantic/semantic.min.css">
+    <link rel="stylesheet" href="../ui/Datepicker/calendar.min.css">
+    <link rel="stylesheet" href="../ui/SweetAlert/sweetalert.css">
+    <link rel="stylesheet" href="../plugin/main.css">
+    <style>
+        body{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id="title">
+    欢迎登陆绩效考核系统
+</div>
+
+<div id="login">
+    <div class="line">
+        <div class="left">
+            帐号：
+            <input type="text" id="user">
+        </div>
+    </div>
+    <div class="line">
+        <div class="left">
+            密码：
+            <input type="password" id="pwd">
+        </div>
+    </div>
+    <div class="line">
+        <button>确定</button>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+
+<script src="../plugin/jquery-3.1.1.min.js"></script>
+<script src="../ui/Datepicker/calendar.min.js"></script>
+<script src="../ui/Semantic/semantic.min.js"></script>
+<script src="../ui/SweetAlert/sweetalert.min.js"></script>
+
+<script>
+
+    $("button").click(function () {
+        var data = {'user': $("#user").val(), 'password': $("#pwd").val()};
+
+        $.post("/admin/login", data, function (data) {
+            if (0 === data) {
+                swal('请输入正确的帐号密码！');
+            } else {
+                window.location.href="/background/main.html";
+            }
+        });
+    });
+
+</script>

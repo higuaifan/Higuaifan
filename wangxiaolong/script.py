@@ -164,7 +164,7 @@ def model(table, cur_list):
 
 
 conn = pymysql.connect(user='root', passwd='root', host='localhost',
-                       db='zhenjie')  # 链接数据库
+                       db='wangxiaolong')  # 链接数据库
 cur = conn.cursor()  # 生成游标
 cur.execute("show tables")  # 表名
 table = copy.copy(cur)
@@ -173,7 +173,7 @@ print table
 
 for each in table:
     cur.execute("SHOW FULL COLUMNS FROM " + each[0])
-    model(each[0], cur)
+    controller(each[0], cur)
     print '表：' + each[0] + '\r\r'
 
 # cur.execute("SHOW FULL COLUMNS FROM fee")

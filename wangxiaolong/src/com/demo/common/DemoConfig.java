@@ -1,7 +1,7 @@
 package com.demo.common;
 
 import com.demo.common.model._MappingKit;
-import com.demo.index.IndexController;
+import com.demo.index.*;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
 import com.jfinal.kit.PropKit;
@@ -47,6 +47,10 @@ public class DemoConfig extends JFinalConfig {
 	 */
 	public void configRoute(Routes me) {
 		me.add("/", IndexController.class, "/index");
+		me.add("/hotel", hotelController.class);
+		me.add("/view", viewController.class);
+		me.add("/getHotel", viewHotelController.class);
+		me.add("/user", visitorController.class);
 	}
 	
 	public void configEngine(Engine me) {
@@ -75,7 +79,7 @@ public class DemoConfig extends JFinalConfig {
 	 * 配置全局拦截器
 	 */
 	public void configInterceptor(Interceptors me) {
-		
+		me.add(new SessionInterceptor());
 	}
 	
 	/**

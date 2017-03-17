@@ -19,6 +19,7 @@ public class _MappingKit {
 		arp.addMapping("hotel", "id", Hotel.class);
 		arp.addMapping("hotel_book", "id", HotelBook.class);
 		arp.addMapping("travel_news", "id", TravelNews.class);
+		arp.addMapping("view_hotel", "id", ViewHotel.class);
 		arp.addMapping("views", "id", Views.class);
 		arp.addMapping("visitor", "id", Visitor.class);
 	}

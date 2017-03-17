@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>登陆</title>
 
-    <link rel="stylesheet" href="../ui/Semantic/semantic.min.css">
-    <link rel="stylesheet" href="../ui/Datepicker/calendar.min.css">
-    <link rel="stylesheet" href="../ui/SweetAlert/sweetalert.css">
-    <link rel="stylesheet" href="../plugin/main.css">
+    <link rel="stylesheet" href="/ui/Semantic/semantic.min.css">
+    <link rel="stylesheet" href="/ui/Datepicker/calendar.min.css">
+    <link rel="stylesheet" href="/ui/SweetAlert/sweetalert.css">
+    <link rel="stylesheet" href="/plugin/main.css">
     <style>
-        body{
+        body {
             height: 100vh;
             width: 100vw;
             display: flex;
@@ -50,21 +50,32 @@
 </html>
 
 
-<script src="../plugin/jquery-3.1.1.min.js"></script>
-<script src="../ui/Datepicker/calendar.min.js"></script>
-<script src="../ui/Semantic/semantic.min.js"></script>
-<script src="../ui/SweetAlert/sweetalert.min.js"></script>
+<script src="/plugin/jquery-3.1.1.min.js"></script>
+<script src="/ui/Datepicker/calendar.min.js"></script>
+<script src="/ui/Semantic/semantic.min.js"></script>
+<script src="/ui/SweetAlert/sweetalert.min.js"></script>
 
 <script>
 
     $("button").click(function () {
         var data = {'user': $("#user").val(), 'password': $("#pwd").val()};
+        console.log('click');
 
-        $.post("/admin/login", data, function (data) {
-            if (0 === data) {
-                swal('请输入正确的帐号密码！');
-            } else {
-                window.location.href="/background/main.html";
+        $.ajax({
+            type:'post',
+            url: "/user/login",
+            data: data,
+            success: function (res) {
+                console.log(res);
+
+                if ('success' === res) {
+                    swal('请输入正确的帐号密码！');
+                } else {
+                    window.location.href = "/background/view.html";
+                }
+            },
+            error:function(e){
+                console.log(e);
             }
         });
     });

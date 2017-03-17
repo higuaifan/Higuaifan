@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>地图</title>
+    <style type="text/css">
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+
+        #allmap {
+            height: 100%;
+            width: 100%;
+        }
+
+        #r-result, #r-result table {
+            width: 100%;
+        }
+    </style>
+    <script src="/plugin/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=XTpP2S3Lk5b78BgwFNyButXwWrMgd0Oh"></script>
+</head>
+<body>
+<div id="allmap"></div>
+<!--<div id="driving_way">-->
+<!--<select>-->
+<!--<option value="0">最少时间</option>-->
+<!--<option value="1">最短距离</option>-->
+<!--<option value="2">避开高速</option>-->
+<!--</select>-->
+<!--<input type="button" id="result" value="查询"/>-->
+<!--</div>-->
+<!--<div id="r-result"></div>-->
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+
+
+var str = window.location.search.replace('?', '');
+var gps = str.split('&');
+var x=gps[0].replace('x=','');
+var y=gps[1].replace('y=','');
+
+
+
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    map.centerAndZoom(new BMap.Point(120.2193, 30.25), 11);
+
+
+    $.ajax({
+        type:'get',
+        url: 'http://api.map.baidu.com/location/ip?ak=XTpP2S3Lk5b78BgwFNyButXwWrMgd0Oh&coor=bd09ll',
+        dataType:"jsonp",
+        success: function (data) {
+            var p1 = new BMap.Point(data.content.point.x, data.content.point.y);
+            var p2 = new BMap.Point(x, y);
+
+            var driving = new BMap.DrivingRoute(map, {renderOptions: {map: map, autoViewport: true}});
+            driving.search(p1, p2);
+        }
+    });
+
+</script>

@@ -24,6 +24,7 @@
       <sourceFolder url="file://$MODULE_DIR$/web/ui/SweetAlert" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/web/ui/Semantic" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/web/plugin" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/web/ui" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

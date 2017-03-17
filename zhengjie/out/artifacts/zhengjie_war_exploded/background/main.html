@@ -30,6 +30,7 @@
 </head>
 <body>
 <div class="main">
+
     <div class="student">
         <table class="ui celled striped table" id="studentTable">
             <thead>
@@ -52,6 +53,27 @@
             </tbody>
         </table>
     </div>
+
+    <div class="rules">
+        <table class="ui celled striped table">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>规则</th>
+                <th style="line-height: 36px;">
+                    操作
+                    <button class="ui icon red button" style="float:right;" id="add">
+                        <i class="plus icon"></i>
+                    </button>
+                </th>
+            </tr>
+            </thead>
+            <tbody id="ruleTbody">
+
+            </tbody>
+        </table>
+    </div>
+
     <div class="rating">
         <table class="ui single line table">
             <thead>
@@ -89,10 +111,10 @@
         var div = document.createElement('div');
         $(div).addClass('ui').addClass('dropdown').addClass('selection');
         var html =
-            '<input type="hidden" name="gender">' +
-            '<i class="dropdown icon"></i>' +
-            '<div class="default text" data-id="' + autoId + '">' + auto + '</div>' +
-            '<div class="menu">';
+                '<input type="hidden" name="gender">' +
+                '<i class="dropdown icon"></i>' +
+                '<div class="default text" data-id="' + autoId + '">' + auto + '</div>' +
+                '<div class="menu">';
 
         for (var i = 0; i < department.length; i++) {
             var d = department[i];
@@ -123,36 +145,36 @@
         var tr = document.createElement('tr');
         tr.className = 'createTr';
         tr.innerHTML = '    <td>' +
-            '        <div class="ui input">' +
-            '        </div>' +
-            '    </td>' +
-            '    <td>' +
-            '        <div class="ui input">' +
-            '            <input type="text">' +
-            '        </div>' +
-            '        <div class="ui input">' +
-            '            <input type="text">' +
-            '        </div>' +
-            '    </td>' +
-            '    <td>' +
-            '        <div class="ui input">' +
-            '            <input type="text">' +
-            '        </div>' +
-            '    </td>' +
-            '    <td>' +
-            '        <div class="ui input">' +
-            '            <input type="text">' +
-            '        </div>' +
-            '    </td>' +
-            '    <td class="chooseBox">' +
-            '    </td>' +
-            '    <td>' +
-            '        <div class="ui buttons">' +
-            '            <button class="ui positive button active">确定</button>' +
-            '            <div class="or"></div>' +
-            '            <button class="ui button cancelButton">取消</button>' +
-            '        </div>' +
-            '    </td>';
+                '        <div class="ui input">' +
+                '        </div>' +
+                '    </td>' +
+                '    <td>' +
+                '        <div class="ui input">' +
+                '            <input type="text">' +
+                '        </div>' +
+                '        <div class="ui input">' +
+                '            <input type="text">' +
+                '        </div>' +
+                '    </td>' +
+                '    <td>' +
+                '        <div class="ui input">' +
+                '            <input type="text">' +
+                '        </div>' +
+                '    </td>' +
+                '    <td>' +
+                '        <div class="ui input">' +
+                '            <input type="text">' +
+                '        </div>' +
+                '    </td>' +
+                '    <td class="chooseBox">' +
+                '    </td>' +
+                '    <td>' +
+                '        <div class="ui buttons">' +
+                '            <button class="ui positive button active">确定</button>' +
+                '            <div class="or"></div>' +
+                '            <button class="ui button cancelButton">取消</button>' +
+                '        </div>' +
+                '    </td>';
         $(tr).find('.chooseBox')[0].append(makeDepartmentList());
 
         return tr;
@@ -173,33 +195,33 @@
 
     var userTable = function (data) {
         return '<tr>' +
-            '        <td>' + data.id + '</td>' +
-            '        <td>' +
-            '           <h4 class="ui image header">' +
-            '               <img src="' + data.pic + '" class="ui mini rounded image">' +
-            '               <div class="content">' +
-            '                   <div class="editText">' + data.real_name + '</div>' +
-            '                   <div class="sub header editText">' + data.user_name + '</div>' +
-            '               </div>' +
-            '           </h4>' +
-            '        </td>' +
-            '        <td class="editText">' +
-            '           ' + data.password +
-            '        </td>' +
-            '        <td class="editText">' +
-            '            ' + data.phone +
-            '        </td>' +
-            '        <td class="listText" data-id="' + data.departmentId + '">' +
-            '            ' + data.department +
-            '        </td>' +
-            '        <td>' +
-            '           <div class="ui buttons">' +
-            '               <button class="ui positive button active edit">编辑</button>' +
-            '               <div class="or"></div>' +
-            '               <button class="ui button">删除</button>' +
-            '           </div>' +
-            '        </td>' +
-            '    </tr>'
+                '        <td>' + data.id + '</td>' +
+                '        <td>' +
+                '           <h4 class="ui image header">' +
+                '               <img src="' + data.pic + '" class="ui mini rounded image">' +
+                '               <div class="content">' +
+                '                   <div class="editText">' + data.real_name + '</div>' +
+                '                   <div class="sub header editText">' + data.user_name + '</div>' +
+                '               </div>' +
+                '           </h4>' +
+                '        </td>' +
+                '        <td class="editText">' +
+                '           ' + data.password +
+                '        </td>' +
+                '        <td class="editText">' +
+                '            ' + data.phone +
+                '        </td>' +
+                '        <td class="listText" data-id="' + data.departmentId + '">' +
+                '            ' + data.department +
+                '        </td>' +
+                '        <td>' +
+                '           <div class="ui buttons">' +
+                '               <button class="ui positive button active edit">编辑</button>' +
+                '               <div class="or"></div>' +
+                '               <button class="ui button">删除</button>' +
+                '           </div>' +
+                '        </td>' +
+                '    </tr>'
     };
 
 
@@ -287,17 +309,17 @@
     var appendTr = function (data) {
         var tr = document.createElement('tr');
         tr.innerHTML = '<td data-id="' + data.id + '">' +
-            '<h4 class="ui image header">' +
-            '<img src="' + data.pic + '" class="ui mini rounded image">' +
-            '<div class="content">' +
-            data.real_name +
-            '<div class="sub header">' + data.user_name + '</div>' +
-            '</div>' +
-            '</h4>' +
-            '</td>' +
-            '<td>' +
-            '<div class="ui rating"></div>' +
-            '</td>';
+                '<h4 class="ui image header">' +
+                '<img src="' + data.pic + '" class="ui mini rounded image">' +
+                '<div class="content">' +
+                data.real_name +
+                '<div class="sub header">' + data.user_name + '</div>' +
+                '</div>' +
+                '</h4>' +
+                '</td>' +
+                '<td>' +
+                '<div class="ui rating"></div>' +
+                '</td>';
         return tr;
     };
 
@@ -305,21 +327,103 @@
         var list = $('.ui.rating');
         for (var i = 0; i < list.length; i++) {
             var id = $(list[i]).parent().prev()[0].getAttribute('data-id');
-            var obj = {rater: id-0, score: getStars($(list[i]))};
+            var obj = {rater: id - 0, score: getStars($(list[i]))};
             console.log(obj);
             $.ajax({
-                type:'post',
+                type: 'post',
                 url: '/rate/insert',
                 data: obj,
-                async : false,
+                async: false,
                 success: function (res) {
                     console.log(res);
                 }
             });
         }
+    });
 
+
+    //   ---- 规则部分
+    $.get('/rules/index', function (data) {
+        var str = '<div class="ui list">';
+
+        for (var i = 0; i < data.length; i++) {
+            var t = i + 1;
+            str += '<div class="item" data-id="' + data[i].id + '">' + t + '.' + data[i].rule + '</div>';
+        }
+
+        str += '</div>';
+
+        $(".rules").append(str);
+    });
+
+    var createRulesTr = function (obj) {
+        var tr = document.createElement('tr');
+        tr.setAttribute('data-id', obj.id);
+        tr.innerHTML = '<td>' + obj.id + '</td>' +
+                '<td class="editText">' + obj.rule + '</td>' +
+                '<td>' +
+                '<div class="ui buttons">' +
+                '<button class="ui positive button active ruleEdit">编辑</button>' +
+                '<div class="or"></div>' +
+                '<button class="ui button ruleDel">删除</button>' +
+                '</div>' +
+                '</td>';
+        return tr;
+    };
+
+    $.get('/rules/index', function (data) {
+        for (var i = 0; i < data.length; i++) {
+            $("#ruleTbody").append(createRulesTr(data[i]));
+        }
+    });
+
+
+    b.on('click', '.ruleEdit', function () {
+        var tr = $(this).parents('tr');
+        var text = tr.find('.editText');
+        $(this).html('保存').addClass('ruleSave').removeClass('ruleEdit');
+
+        for (var i = 0; i < text.length; i++) {
+            var b = text[i];
+            var html = b.innerHTML.replace(/ /g, '');
+            b.innerHTML = '<div class="ui input saveText"><input type="text" value="' + html + '"></div>';
+        }
+    });
+
+    b.on('click', '.ruleSave', function () {
+        var tr = $(this).parents('tr');
+        var text = tr.find('.saveText');
+        var arr = [];
+        var id = tr.children().eq(0).html();
+        $(this).html('编辑').addClass('ruleEdit').removeClass('ruleSave');
+        for (var i = 0; i < text.length; i++) {
+            var b = text[i];
+            var p = $(b).parent();
+            var val = $(b).children().eq(0).val();
+            arr.push(val);
+            p.html(val);
+        }
+
+        var select = $(tr).find(".selection");
+        var td = select.find('input').parents('td');
+
+        var data = {
+            'id': id-0,
+            'rule': arr[0]
+        };
+
+        console.log(data);
+
+        $.post("/rules/update", data, function (res) {
+            if (res) {
+                swal('更新成功');
+            } else {
+                swal('更新失败');
+            }
+        });
 
     });
+
 
 </script>
 

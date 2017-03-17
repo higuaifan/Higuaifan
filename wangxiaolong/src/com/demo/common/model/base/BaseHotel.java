@@ -63,4 +63,22 @@ public abstract class BaseHotel<M extends BaseHotel<M>> extends Model<M> impleme
 		return get("pic");
 	}
 
+	public M setX(java.lang.String x) {
+		set("x", x);
+		return (M)this;
+	}
+
+	public java.lang.String getX() {
+		return get("x");
+	}
+
+	public M setY(java.lang.String y) {
+		set("y", y);
+		return (M)this;
+	}
+
+	public java.lang.String getY() {
+		return get("y");
+	}
+
 }

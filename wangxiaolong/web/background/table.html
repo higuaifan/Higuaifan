@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台</title>
+    <link rel="stylesheet" href="/ui/Semantic/semantic.css">
+    <link rel="stylesheet" href="/ui/SweetAlert/sweetalert.css">
+    <script src="/plugin/jquery-3.1.1.min.js"></script>
+    <script src="/ui/Semantic/semantic.min.js"></script>
+    <script src="/ui/SweetAlert/sweetalert.min.js"></script>
+    <style>
+        td{
+            overflow: auto;
+            max-height: 50px;
+            max-width:100px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="main">
+
+    <div id="left">
+
+
+    </div>
+    <div id="right">
+
+        <table class="ui celled striped table" >
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>酒店名</th>
+                <th>地址</th>
+                <th>联系电话</th>
+                <th>信息</th>
+                <th>图片</th>
+                <th>x</th>
+                <th>y</th>
+                <th style="line-height: 36px;">
+                    操作
+                    <button class="ui icon red button" style="float:right;" id="add">
+                        <i class="plus icon"></i>
+                    </button>
+                </th>
+            </tr>
+            </thead>
+            <tbody id="hotelTbody">
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
+
+<script>
+
+    $.get("/hotel/index", function (data) {
+        for (var i=0;i<data.length; i++) {
+            console.log();
+            $("#hotelTbody").append(hotelTable(data[i]));
+        }
+    });
+
+    var hotelTable = function (data) {
+        var tr = document.createElement('tr');
+        tr.className = 'createTr';
+        tr.innerHTML = '<tr>' +
+            '        <td>' + data.id + '</td>' +
+            '        <td class="editText">' +
+            '           ' + data.hotel_name +
+            '        </td>' +
+            '        <td class="editText">' +
+            '           ' + data.address +
+            '        </td>' +
+            '        <td class="editText">' +
+            '            ' + data.phone +
+            '        </td>' +
+            '        <td class="editText">' +
+            '            ' + data.message+
+            '        </td>' +
+            '        <td class="editText">' +
+            '            ' + data.pic+
+            '        </td>' +
+            '        <td class="editText">' +
+            '            ' + data.x+
+            '        </td>' +
+            '        <td class="editText">' +
+            '            ' + data.y+
+            '        </td>' +
+            '        <td>' +
+            '           <div class="ui buttons">' +
+            '               <button class="ui positive button active edit">编辑</button>' +
+            '               <div class="or"></div>' +
+            '               <button class="ui button">删除</button>' +
+            '           </div>' +
+            '        </td>' +
+            '    </tr>';
+        return tr;
+    };
+
+</script>

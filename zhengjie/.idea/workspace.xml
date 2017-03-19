@@ -78,12 +78,30 @@
       <file leaf-file-name="main.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/background/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="185" column="0" lean-forward="true" selection-start-line="185" selection-start-column="0" selection-end-line="187" selection-end-column="7" />
+            <state relative-caret-position="1240">
+              <caret line="183" column="22" lean-forward="true" selection-start-line="183" selection-start-column="22" selection-end-line="183" selection-end-column="22" />
               <folding>
                 <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#2408#2511#0" expanded="false" />
+                <element signature="e#2572#3302#0" expanded="false" />
+                <element signature="e#3362#3416#0" expanded="false" />
+                <element signature="e#3451#3646#0" expanded="false" />
+                <element signature="e#3681#5185#0" expanded="false" />
+                <element signature="e#5259#5309#0" expanded="false" />
+                <element signature="e#5357#5463#0" expanded="false" />
+                <element signature="e#5503#6982#0" expanded="false" />
+                <element signature="e#7025#7766#0" expanded="false" />
+                <element signature="e#7809#9133#0" expanded="false" />
+                <element signature="e#9204#9424#0" expanded="false" />
+                <element signature="e#9463#10049#0" expanded="false" />
+                <element signature="e#10089#10623#0" expanded="false" />
+                <element signature="e#10689#10991#0" expanded="false" />
+                <element signature="e#11034#11579#0" expanded="false" />
+                <element signature="e#11624#11749#0" expanded="false" />
+                <element signature="e#11797#12207#0" expanded="false" />
+                <element signature="e#12254#13107#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -190,10 +208,9 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1580" />
-    <option name="y" value="691" />
-    <option name="width" value="1918" />
-    <option name="height" value="1050" />
+    <option name="x" value="1716" />
+    <option name="width" value="2016" />
+    <option name="height" value="2130" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -1038,15 +1055,15 @@
       <workItem from="1489669913884" duration="1234000" />
       <workItem from="1489686272517" duration="494000" />
       <workItem from="1489825847234" duration="2074000" />
-      <workItem from="1489910348133" duration="2168000" />
+      <workItem from="1489910348133" duration="2197000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56541000" />
+    <option name="totallyTimeSpent" value="56570000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1580" y="691" width="1918" height="1050" extended-state="0" />
+    <frame x="1716" y="0" width="2016" height="2130" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1057,7 +1074,7 @@
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14639397" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1390593" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1070,7 +1087,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20903674" sideWeight="0.4971022" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919562" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18191604" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17280163" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1096,7 +1113,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="48" />
+      <option name="time" value="49" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1368,12 +1385,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/background/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="185" column="0" lean-forward="true" selection-start-line="185" selection-start-column="0" selection-end-line="187" selection-end-column="7" />
+        <state relative-caret-position="1240">
+          <caret line="183" column="22" lean-forward="true" selection-start-line="183" selection-start-column="22" selection-end-line="183" selection-end-column="22" />
           <folding>
             <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#2408#2511#0" expanded="false" />
+            <element signature="e#2572#3302#0" expanded="false" />
+            <element signature="e#3362#3416#0" expanded="false" />
+            <element signature="e#3451#3646#0" expanded="false" />
+            <element signature="e#3681#5185#0" expanded="false" />
+            <element signature="e#5259#5309#0" expanded="false" />
+            <element signature="e#5357#5463#0" expanded="false" />
+            <element signature="e#5503#6982#0" expanded="false" />
+            <element signature="e#7025#7766#0" expanded="false" />
+            <element signature="e#7809#9133#0" expanded="false" />
+            <element signature="e#9204#9424#0" expanded="false" />
+            <element signature="e#9463#10049#0" expanded="false" />
+            <element signature="e#10089#10623#0" expanded="false" />
+            <element signature="e#10689#10991#0" expanded="false" />
+            <element signature="e#11034#11579#0" expanded="false" />
+            <element signature="e#11624#11749#0" expanded="false" />
+            <element signature="e#11797#12207#0" expanded="false" />
+            <element signature="e#12254#13107#0" expanded="false" />
           </folding>
         </state>
       </provider>

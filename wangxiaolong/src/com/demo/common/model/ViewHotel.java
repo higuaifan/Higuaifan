@@ -15,8 +15,12 @@ public class ViewHotel extends BaseViewHotel<ViewHotel> {
         return ViewHotel.dao.find("select * from view_hotel");
     }
 
+    public List getViewHotelById(int id) {
+        return ViewHotel.dao.find("select * from view_hotel where view_id = ?", id);
+    }
+
     public List getViewHotelByView(int view) {
-        return ViewHotel.dao.find("select hotel.id,hotel.hotel_name,hotel.message,hotel.pic,x,y from view_hotel,hotel where view_id = ? and view_hotel.hotel_id=hotel.id",view);
+        return ViewHotel.dao.find("select hotel.id,hotel.hotel_name,hotel.message,hotel.pic,x,y from view_hotel,hotel where view_id = ? and view_hotel.hotel_id=hotel.id", view);
     }
 
     public boolean insertViewHotel(int hotel_id, int view_id) {

@@ -21,6 +21,12 @@ public class viewHotelController extends Controller {
         renderJson(viewHotel.getViewHotelByView(view));
     }
 
+    public void getHotelByView() {
+        int view = getParaToInt("id");
+        renderJson(viewHotel.getViewHotelById(view));
+    }
+
+
 
     public void insert() {
         int hotel_id = getParaToInt("hotel_id");

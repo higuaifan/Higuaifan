@@ -31,4 +31,5 @@ public class Visitor extends BaseVisitor<Visitor> {
 		return Visitor.dao.find("select * from visitor where user_name =? and password = ?",user,password);
 	}
 
+
 }

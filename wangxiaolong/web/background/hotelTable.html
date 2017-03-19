@@ -1,61 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>后台</title>
-    <link rel="stylesheet" href="/ui/Semantic/semantic.css">
-    <link rel="stylesheet" href="/ui/SweetAlert/sweetalert.css">
-    <script src="/plugin/jquery-3.1.1.min.js"></script>
-    <script src="/ui/Semantic/semantic.min.js"></script>
-    <script src="/ui/SweetAlert/sweetalert.min.js"></script>
-    <style>
-        td {
-            overflow: auto;
-            text-overflow: ellipsis;
-            max-width: 100px;
-        }
-    </style>
-</head>
-<body>
+<div id="loadTable">
 
-<div id="main">
+    <table class="ui celled striped table">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>酒店名</th>
+            <th>地址</th>
+            <th>联系电话</th>
+            <th>信息</th>
+            <th>图片</th>
+            <th>x</th>
+            <th>y</th>
+            <th style="line-height: 36px;">
+                操作
+                <button class="ui icon red button" style="float:right;" id="add">
+                    <i class="plus icon"></i>
+                </button>
+            </th>
+        </tr>
+        </thead>
+        <tbody id="hotelTbody">
 
-    <div id="left">
-
-
-    </div>
-    <div id="right">
-
-        <table class="ui celled striped table">
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>酒店名</th>
-                <th>地址</th>
-                <th>联系电话</th>
-                <th>信息</th>
-                <th>图片</th>
-                <th>x</th>
-                <th>y</th>
-                <th style="line-height: 36px;">
-                    操作
-                    <button class="ui icon red button" style="float:right;" id="add">
-                        <i class="plus icon"></i>
-                    </button>
-                </th>
-            </tr>
-            </thead>
-            <tbody id="hotelTbody">
-
-            </tbody>
-        </table>
-
-    </div>
+        </tbody>
+    </table>
 
 </div>
-
-</body>
-</html>
 
 
 <script>
@@ -107,7 +76,7 @@
         return tr;
     };
 
-    var b = $("body");
+    var b = $("#loadTable");
 
     b.on('click', '.edit', function () {
         var tr = $(this).parents('tr');
@@ -264,7 +233,7 @@
     b.on('click', '.del', function () {
         var tr = $(this).parents('tr');
         var id = tr.children().eq(0).html();
-        $.post("/hotel/delete", {'id':id}, function (res) {
+        $.post("/hotel/delete", {'id': id}, function (res) {
             if (res) {
                 swal('删除成功');
                 location.reload();

@@ -1,59 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>后台</title>
-    <link rel="stylesheet" href="/ui/Semantic/semantic.css">
-    <link rel="stylesheet" href="/ui/SweetAlert/sweetalert.css">
-    <script src="/plugin/jquery-3.1.1.min.js"></script>
-    <script src="/ui/Semantic/semantic.min.js"></script>
-    <script src="/ui/SweetAlert/sweetalert.min.js"></script>
-    <style>
-        td {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100px;
+<div id="loadTable">
 
-        }
-    </style>
-</head>
-<body>
+    <table class="ui celled striped table">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>景点名</th>
+            <th>信息</th>
+            <th>地址</th>
+            <th>图片</th>
+            <th style="line-height: 36px;">
+                操作
+                <button class="ui icon red button" style="float:right;" id="add">
+                    <i class="plus icon"></i>
+                </button>
+            </th>
+        </tr>
+        </thead>
+        <tbody id="viewTbody">
 
-<div id="main">
-
-    <div id="left">
-
-
-    </div>
-    <div id="right">
-
-        <table class="ui celled striped table">
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>景点名</th>
-                <th>信息</th>
-                <th>地址</th>
-                <th>图片</th>
-                <th style="line-height: 36px;">
-                    操作
-                    <button class="ui icon red button" style="float:right;" id="add">
-                        <i class="plus icon"></i>
-                    </button>
-                </th>
-            </tr>
-            </thead>
-            <tbody id="viewTbody">
-
-            </tbody>
-        </table>
-
-    </div>
+        </tbody>
+    </table>
 
 </div>
-
-</body>
-</html>
 
 
 <script>
@@ -64,7 +32,6 @@
         }
 
         for (var i = 0; i < data.length; i++) {
-            console.log();
             $("#viewTbody").append(viewTable(data[i]));
         }
     });
@@ -87,8 +54,8 @@
             '        </td>' +
             '        <td>' +
             '           <div class="ui buttons">' +
-            '               <button class="ui positive button active edit">编辑</button>' +
-            '               <div class="or"></div>' +
+            '               <button class="ui button edit positive">编辑</button>' +
+            '               <button class="ui button hotel">酒店</button>' +
             '               <button class="ui button del">删除</button>' +
             '           </div>' +
             '        </td>' +
@@ -96,7 +63,7 @@
         return tr;
     };
 
-    var b = $("body");
+    var b = $("#loadTable");
 
     b.on('click', '.edit', function () {
         var tr = $(this).parents('tr');
@@ -195,7 +162,6 @@
         return tr;
     };
 
-
     b.on('click', '.addButton', function () {
         var tr = $(this).parents('tr');
         var text = tr.find('.saveText');
@@ -232,10 +198,98 @@
     b.on('click', '.del', function () {
         var tr = $(this).parents('tr');
         var id = tr.children().eq(0).html();
-        $.post("/view/delete", {'id':id}, function (res) {
+        $.post("/view/delete", {'id': id}, function (res) {
             if (res) {
                 swal('删除成功');
                 location.reload();
+            } else {
+                swal('删除失败');
+            }
+        });
+    });
+
+    b.on('click', '.hotel', function () {
+        var tr = $(this).parents('tr');
+        var id = tr.children().eq(0).html();
+        $(this).html('新增').addClass('hotelAdd').removeClass('hotel');
+
+        $.post('/getHotel/getHotelByView', {'id': id}, function (data) {
+
+            for (var i = 0; i < data.length; i++) {
+                $(tr).after(createHotelTr(data[i]));
+            }
+        });
+
+
+
+    });
+
+    var createHotelTr = function (data) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<tr class="hotelCreateTr">' +
+            '        <td>' + data.id + '</td>' +
+            '        <td class="editText">' +
+            '           ' + data.hotel_id +
+            '        </td>' +
+            '        <td>' +
+            '           <div class="ui buttons">' +
+            '               <button class="ui button hotelDel">删除</button>' +
+            '           </div>' +
+            '        </td>' +
+            '    </tr>';
+        return tr;
+    };
+
+    var newHotelTr = function () {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<tr class="hotelCreateTr">' +
+            '        <td></td>' +
+            '        <td class="ui input saveText">' +
+            '            <input type="text">' +
+            '        </td>' +
+            '        <td>' +
+            '           <div class="ui buttons">' +
+            '               <button class="ui button hotelSave">保存</button>' +
+            '           </div>' +
+            '        </td>' +
+            '    </tr>';
+        return tr;
+    };
+
+    b.on('click','.hotelAdd',function () {
+        var tr = $(this).parents('tr');
+        if ($(".hotelCreateTr").length < 1) {
+            tr.after(newHotelTr());
+        }
+    });
+
+    b.on('click','.hotelSave',function(){
+        var tr = $(this).parents('tr');
+        var input=tr.find('input').val();
+        var idTr=tr.prev();
+        var id = idTr.children().eq(0).html();
+
+        var data={'view_id':id,'hotel_id':input};
+
+        $.post('/getHotel/insert',data,function(res){
+            if (res) {
+                swal('新增成功');
+                location.reload();
+            } else {
+                swal('新增失败');
+            }
+        });
+    });
+
+    b.on('click','.hotelDel',function(){
+        var tr = $(this).parents('tr');
+        var id = tr.children().eq(0).html();
+
+        var data={'id':id};
+
+        $.post('/getHotel/delete',data,function(res){
+            if (res) {
+                swal('删除成功');
             } else {
                 swal('删除失败');
             }

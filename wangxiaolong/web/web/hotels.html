@@ -24,7 +24,7 @@
         }
 
         input {
-            width: 100px;
+            margin: 10px;
         }
 
         .piled {
@@ -63,7 +63,7 @@
 
         console.log(data);
 
-        for(var i=0;i<data.length;i++){
+        for (var i = 0; i < data.length; i++) {
             $(".main").append(createDiv(data[i]));
         }
         $(".describe").each(function (i, e) {
@@ -90,10 +90,11 @@
             obj.message.replace(' 　　', '<p />') +
             '</p>' +
             '<div class="control">' +
-            '<button class="ui red button">' +
+            '<input type="date">' +
+            '<button class="ui red button book" data-id="' + obj.id + '">' +
             '预订' +
             '</button>' +
-            '<button class="ui blue button rode" data-x="'+obj.x+'" data-y="'+obj.y+'">' +
+            '<button class="ui blue button rode" data-x="' + obj.x + '" data-y="' + obj.y + '">' +
             '路径' +
             '</button>' +
             '</div>' +
@@ -101,10 +102,39 @@
         return div;
     };
 
-    $("body").on('click','.rode',function(){
-        var x=this.getAttribute('data-x');
-        var y=this.getAttribute('data-y');
-        window.open('/web/map.html?x='+x+'&y='+y);
+    var b = $("body");
+
+    b.on('click', '.rode', function () {
+        var x = this.getAttribute('data-x');
+        var y = this.getAttribute('data-y');
+        window.open('/web/map.html?x=' + x + '&y=' + y);
+    });
+
+    b.on('click', '.book', function () {
+        var id = this.getAttribute('data-id');
+        var date = $(this).prev().val();
+
+        if ('' === date) {
+            swal('请选择日期');
+        } else {
+            var data = {
+                'hotel': id,
+                'time': date
+            };
+
+            console.log(data);
+
+            $.post('/book/insert', data, function (res) {
+                if (res) {
+                    swal('预定成功');
+                } else {
+                    swal('预定失败');
+                }
+            });
+
+        }
+
+
     });
 
 </script>

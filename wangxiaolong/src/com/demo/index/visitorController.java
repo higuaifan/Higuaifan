@@ -3,6 +3,8 @@ package com.demo.index;
 import com.demo.common.model.Visitor;
 import com.jfinal.core.Controller;
 
+import java.util.List;
+
 /**
  * Created by Higuaifan on 2017/3/17.
  * 大道五十,代码四九,bug遁一.
@@ -19,10 +21,12 @@ public class visitorController extends Controller {
     public void login(){
         String user = getPara("user");
         String pwd = getPara("password");
-
-        if(visitor.loginVisitor(user,pwd).size()>0){
+        List U=visitor.loginVisitor(user,pwd);
+        if(U.size()>0){
             setSessionAttr("user", user);
             setSessionAttr("pwd", pwd);
+            Object V= U.get(0);
+            setSessionAttr("id", ((Visitor) V).getId());
             render("success");
 
         }else{

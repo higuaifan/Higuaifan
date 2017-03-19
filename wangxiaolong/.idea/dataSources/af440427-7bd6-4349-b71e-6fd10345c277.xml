@@ -73,7 +73,7 @@
     </column>
     <column id="28" parent="11" name="time">
       <Position>4</Position>
-      <DataType>time|0</DataType>
+      <DataType>date|0</DataType>
     </column>
     <key id="29" parent="11" name="PRIMARY">
       <ColNames>id</ColNames>

@@ -51,6 +51,7 @@ public class DemoConfig extends JFinalConfig {
 		me.add("/view", viewController.class);
 		me.add("/getHotel", viewHotelController.class);
 		me.add("/user", visitorController.class);
+		me.add("/book", hotelBookController.class);
 	}
 	
 	public void configEngine(Engine me) {

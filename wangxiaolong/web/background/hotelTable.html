@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台</title>
+    <link rel="stylesheet" href="/ui/Semantic/semantic.css">
+    <link rel="stylesheet" href="/ui/SweetAlert/sweetalert.css">
+    <script src="/plugin/jquery-3.1.1.min.js"></script>
+    <script src="/ui/Semantic/semantic.min.js"></script>
+    <script src="/ui/SweetAlert/sweetalert.min.js"></script>
+    <style>
+        td {
+            overflow: auto;
+            text-overflow: ellipsis;
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="main">
+
+    <div id="left">
+
+
+    </div>
+    <div id="right">
+
+        <table class="ui celled striped table">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>酒店名</th>
+                <th>地址</th>
+                <th>联系电话</th>
+                <th>信息</th>
+                <th>图片</th>
+                <th>x</th>
+                <th>y</th>
+                <th style="line-height: 36px;">
+                    操作
+                    <button class="ui icon red button" style="float:right;" id="add">
+                        <i class="plus icon"></i>
+                    </button>
+                </th>
+            </tr>
+            </thead>
+            <tbody id="hotelTbody">
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
+
+<script>
+
+    $.get("/hotel/index", function (data) {
+        if ('<' === data[0]) {
+            location.href = '/index/index.html';
+        }
+
+        for (var i = 0; i < data.length; i++) {
+            console.log();
+            $("#hotelTbody").append(hotelTable(data[i]));
+        }
+    });
+
+    var hotelTable = function (data) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<tr>' +
+            '        <td>' + data.id + '</td>' +
+            '        <td class="editText">' +
+            '           ' + data.hotel_name +
+            '        </td>' +
+            '        <td class="editText">' +
+            '           ' + data.address +
+            '        </td>' +
+            '        <td class="editText">' +
+            '            ' + data.phone +
+            '        </td>' +
+            '        <td class="editText">' +
+            '            ' + data.message +
+            '        </td>' +
+            '        <td class="editText">' +
+            '            ' + data.pic +
+            '        </td>' +
+            '        <td class="editText">' +
+            '            ' + data.x +
+            '        </td>' +
+            '        <td class="editText">' +
+            '            ' + data.y +
+            '        </td>' +
+            '        <td>' +
+            '           <div class="ui buttons">' +
+            '               <button class="ui positive button active edit">编辑</button>' +
+            '               <div class="or"></div>' +
+            '               <button class="ui button del">删除</button>' +
+            '           </div>' +
+            '        </td>' +
+            '    </tr>';
+        return tr;
+    };
+
+    var b = $("body");
+
+    b.on('click', '.edit', function () {
+        var tr = $(this).parents('tr');
+        var text = tr.find('.editText');
+        $(this).html('保存').addClass('save').removeClass('edit');
+
+        for (var i = 0; i < text.length; i++) {
+            var b = text[i];
+            var html = b.innerHTML.replace(/ /g, '');
+            b.innerHTML = '<div class="ui input saveText"><input type="text" value="' + html + '"></div>';
+        }
+    });
+
+    b.on('click', '.save', function () {
+        var tr = $(this).parents('tr');
+        var text = tr.find('.saveText');
+        var arr = [];
+        var id = tr.children().eq(0).html();
+        $(this).html('编辑').addClass('edit').removeClass('save');
+        for (var i = 0; i < text.length; i++) {
+            var b = text[i];
+            var p = $(b).parent();
+            var val = $(b).children().eq(0).val();
+            arr.push(val);
+            p.html(val);
+        }
+
+
+        var data = {
+            'id': id,
+            'hotel_name': arr[0],
+            'address': arr[1],
+            'phone': arr[2],
+            'message': arr[3],
+            'pic': arr[4],
+            'x': arr[5],
+            'y': arr[6]
+        };
+
+        console.log(data);
+
+        $.post("/hotel/update", data, function (res) {
+            if (res) {
+                swal('更新成功');
+                location.reload();
+            } else {
+                swal('更新失败');
+            }
+        });
+
+    });
+
+    b.on('click', '.cancelButton', function () {
+        $(this).parents('tr')[0].remove();
+    });
+
+    $("#add").click(function () {
+        if ($(".createTr").length < 1) {
+            $("#hotelTbody").prepend(createTr());
+        }
+    });
+
+    var createTr = function () {
+        var tr = document.createElement('tr');
+        tr.className = 'createTr';
+        tr.innerHTML = '<td>' +
+            '        <div class="ui input">' +
+            '        </div>' +
+            '    </td>' +
+            '    <td>' +
+            '        <div class="ui input saveText">' +
+            '            <input type="text">' +
+            '        </div>' +
+            '    </td>' +
+            '    <td>' +
+            '        <div class="ui input saveText">' +
+            '            <input type="text">' +
+            '        </div>' +
+            '    </td>' +
+            '    <td>' +
+            '        <div class="ui input saveText">' +
+            '            <input type="text">' +
+            '        </div>' +
+            '    </td>' +
+            '    <td>' +
+            '        <div class="ui input saveText">' +
+            '            <input type="text">' +
+            '        </div>' +
+            '    </td>' +
+            '    <td>' +
+            '        <div class="ui input saveText">' +
+            '            <input type="text">' +
+            '        </div>' +
+            '    </td>' +
+            '    <td>' +
+            '        <div class="ui input saveText">' +
+            '            <input type="text">' +
+            '        </div>' +
+            '    </td>' +
+            '    <td>' +
+            '        <div class="ui input saveText">' +
+            '            <input type="text">' +
+            '        </div>' +
+            '    </td>' +
+            '    <td>' +
+            '        <div class="ui buttons">' +
+            '            <button class="ui positive button active addButton">确定</button>' +
+            '            <div class="or"></div>' +
+            '            <button class="ui button cancelButton">取消</button>' +
+            '        </div>' +
+            '    </td>';
+
+        return tr;
+    };
+
+
+    b.on('click', '.addButton', function () {
+        var tr = $(this).parents('tr');
+        var text = tr.find('.saveText');
+        var arr = [];
+        $(this).html('编辑').addClass('edit').removeClass('save');
+        for (var i = 0; i < text.length; i++) {
+            var b = text[i];
+            var p = $(b).parent();
+            var val = $(b).children().eq(0).val();
+            arr.push(val);
+            p.html(val);
+        }
+
+
+        var data = {
+            'hotel_name': arr[0],
+            'address': arr[1],
+            'phone': arr[2],
+            'message': arr[3],
+            'pic': arr[4],
+            'x': arr[5],
+            'y': arr[6]
+        };
+
+        console.log(data);
+
+        $.post("/hotel/insert", data, function (res) {
+            if (res) {
+                swal('添加成功');
+                location.reload();
+            } else {
+                swal('添加失败');
+            }
+        });
+
+    });
+
+    b.on('click', '.del', function () {
+        var tr = $(this).parents('tr');
+        var id = tr.children().eq(0).html();
+        $.post("/hotel/delete", {'id':id}, function (res) {
+            if (res) {
+                swal('删除成功');
+                location.reload();
+            } else {
+                swal('删除失败');
+            }
+        });
+    });
+
+</script>

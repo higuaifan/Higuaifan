@@ -20,8 +20,9 @@ public class rateController extends Controller {
     public void insert() {
         int rater = getParaToInt("rater");
         int score = getParaToInt("score");
+        int userId= getSessionAttr("id");
         // TODO: 2017/3/15 获取user session
-//        renderJson(rate.insertRate(rater,score));
+        renderJson(rate.insertRate(rater,score,userId));
     }
 
     public void update() {

@@ -36,13 +36,13 @@ public abstract class BaseRate<M extends BaseRate<M>> extends Model<M> implement
 		return get("score");
 	}
 
-	public M setUserId(java.lang.Integer userId) {
-		set("user_id", userId);
+	public M setStudent(java.lang.Integer student) {
+		set("student", student);
 		return (M)this;
 	}
 
-	public java.lang.Integer getUserId() {
-		return get("user_id");
+	public java.lang.Integer getStudent() {
+		return get("student");
 	}
 
 }

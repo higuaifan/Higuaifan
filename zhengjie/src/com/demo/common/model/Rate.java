@@ -17,12 +17,12 @@ public class Rate extends BaseRate<Rate> {
 
 	public boolean insertRate(int rater,int score,int userId) {
 		// TODO: 2017/3/15  如果存在，就update 
-		return new Rate().set("rater",rater).set("score",score).set("user_id",userId).save();
+		return new Rate().set("rater",rater).set("score",score).setStudent(userId).save();
 
 	}
 
 	public boolean updateRate(int id,int rater,int score,int userId) {
-		return Rate.dao.findById(id).setRater(rater).setScore(score).setUserId(userId).update();
+		return Rate.dao.findById(id).setRater(rater).setScore(score).setStudent(userId).update();
 	}
 
 	public boolean deleteRate(int id){

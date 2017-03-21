@@ -25,4 +25,8 @@ public class Student extends BaseStudent<Student> {
 	public boolean deleteStudent(int id) {
 		return Student.dao.findById(id).delete();
 	}
+
+	public List loginStudent(String user,String password){
+		return Student.dao.find("select * from student where user_name =? and password = ?",user,password);
+	}
 }

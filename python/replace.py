@@ -1,7 +1,0 @@
-f = open('htmlcode.txt')
-str=f.read()
-f.close()
-str=str.replace('<','&lt;')
-str=str.replace('>','&gt;')
-f=open('htmlcode.txt','w')
-f.write(str)

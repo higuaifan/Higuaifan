@@ -73,8 +73,8 @@ def insert(title, content, img, web, text_type):
     try:
         cur.execute(sql, (title, content, t, img, web, text_type))
         conn.commit()
-    except Exception as e:
-        print "error: %s" % e
+    except:
+        print "error"
     cur.close()
 
 

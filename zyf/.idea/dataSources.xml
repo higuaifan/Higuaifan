@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3274131095">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="zhenjie@rm-wz9h86151kd3mlx1io.mysql.rds.aliyuncs.com" uuid="0a38a8b7-e42e-45b9-9abe-b07d785042ed">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

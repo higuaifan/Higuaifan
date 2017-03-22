@@ -21,7 +21,6 @@ public class rateController extends Controller {
         int rater = getParaToInt("rater");
         int score = getParaToInt("score");
         int userId= getSessionAttr("id");
-        // TODO: 2017/3/15 获取user session
         renderJson(rate.insertRate(rater,score,userId));
     }
 
@@ -38,5 +37,10 @@ public class rateController extends Controller {
         int id=getParaToInt("id");
         renderJson(rate.deleteRate(id));
     }
+
+    public void getRank(){
+        renderJson(rate.getRateAvg());
+    }
+
 }
 

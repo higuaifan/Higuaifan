@@ -27,5 +27,4 @@ public class Rules extends BaseRules<Rules> {
         return Rules.dao.findById(id).delete();
     }
 
-
 }

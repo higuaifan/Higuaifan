@@ -16,8 +16,17 @@ public class Rate extends BaseRate<Rate> {
 	}
 
 	public boolean insertRate(int rater,int score,int userId) {
-		// TODO: 2017/3/15  如果存在，就update 
-		return new Rate().set("rater",rater).set("score",score).setStudent(userId).save();
+
+		List rateList = findStudent(rater,userId);
+		if(rateList.size()>0){
+			Rate r= (Rate) rateList.get(0);
+			int id= r.getId();
+			return updateRate(id,rater,score,userId);
+		}else{
+			return new Rate().set("rater",rater).set("score",score).setStudent(userId).save();
+		}
+
+
 
 	}
 
@@ -27,5 +36,14 @@ public class Rate extends BaseRate<Rate> {
 
 	public boolean deleteRate(int id){
 		return Rate.dao.findById(id).delete();
+	}
+
+	private List findStudent(int rater,int userId){
+		return Rate.dao.find("select * from rate where rater = ? and student = ?",rater,userId);
+	}
+
+
+	public List getRateAvg(){
+		return Rate.dao.find("select real_name,user_name,avg(score) as `score` from rate,student where rater=student.id group by rater");
 	}
 }

@@ -9,23 +9,26 @@
     <script src="/ui/Semantic/semantic.min.js"></script>
     <script src="/ui/SweetAlert/sweetalert.min.js"></script>
     <style>
-        body{
+        body {
             display: flex;
             margin: 0;
             padding: 0;
             width: 100vw;
             height: 100vh;
         }
-        #left{
+
+        #left {
             height: 100%;
-            width:200px;
+            width: 200px;
             background-color: #3F51B5;
         }
-        #right{
-            width:calc(100% - 200px);
+
+        #right {
+            width: calc(100% - 200px);
             overflow-y: scroll;
         }
-        .tab{
+
+        .tab {
 
             text-align: center;
             color: #fff;
@@ -35,7 +38,8 @@
             width: 100%;
             background-color: #03A9F4;
         }
-        .tab:hover{
+
+        .tab:hover {
             cursor: pointer;
             background-color: #2196F3;
         }
@@ -50,6 +54,8 @@
     <div class="tab" data-html="rules">规则表</div>
     <div class="tab" data-html="rating">评分信息表</div>
     <div class="tab" data-html="avgRate">排名表</div>
+
+    <div>登出</div>
 </div>
 
 <div id="right">
@@ -61,9 +67,9 @@
 
 
 <script>
-    $(".tab").click(function(){
-        var html=$(this).attr('data-html');
-        $("#right").load('tables/'+html+'.html');
+    $(".tab").click(function () {
+        var html = $(this).attr('data-html');
+        $("#right").load('tables/' + html + '.html');
     });
 
 </script>

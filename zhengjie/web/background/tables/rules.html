@@ -19,18 +19,7 @@
 </div>
 
 <script>
-    $.get('/rules/index', function (data) {
-        var str = '<div class="ui list">';
 
-        for (var i = 0; i < data.length; i++) {
-            var t = i + 1;
-            str += '<div class="item" data-id="' + data[i].id + '">' + t + '.' + data[i].rule + '</div>';
-        }
-
-        str += '</div>';
-
-        $(".rules").append(str);
-    });
 
     var createRulesTr = function (obj) {
         var tr = document.createElement('tr');

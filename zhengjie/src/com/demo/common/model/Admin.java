@@ -15,8 +15,8 @@ public class Admin extends BaseAdmin<Admin> {
         return Admin.dao.find("select * from admin");
     }
 
-    public int login(String user,String pwd){
-        return Admin.dao.find("select * from admin where admin_name=? and password=?",user,pwd).size();
+    public List login(String user,String pwd){
+        return Admin.dao.find("select * from admin where admin_name=? and password=?",user,pwd);
     }
 
 }

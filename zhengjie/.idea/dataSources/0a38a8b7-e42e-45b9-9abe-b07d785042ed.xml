@@ -66,55 +66,59 @@
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="27" parent="14" name="PRIMARY">
+    <column id="27" parent="14" name="student">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="28" parent="14" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="28" parent="15" name="id">
+    <column id="29" parent="15" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="29" parent="15" name="rule">
+    <column id="30" parent="15" name="rule">
       <Position>2</Position>
       <DataType>text|0</DataType>
     </column>
-    <key id="30" parent="15" name="PRIMARY">
+    <key id="31" parent="15" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="31" parent="16" name="id">
+    <column id="32" parent="16" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="32" parent="16" name="user_name">
+    <column id="33" parent="16" name="user_name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="33" parent="16" name="real_name">
+    <column id="34" parent="16" name="real_name">
       <Position>3</Position>
       <DataType>varchar(10)|0</DataType>
     </column>
-    <column id="34" parent="16" name="password">
+    <column id="35" parent="16" name="password">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="35" parent="16" name="phone">
+    <column id="36" parent="16" name="phone">
       <Position>5</Position>
       <DataType>varchar(11)|0</DataType>
     </column>
-    <column id="36" parent="16" name="department">
+    <column id="37" parent="16" name="department">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="37" parent="16" name="pic">
+    <column id="38" parent="16" name="pic">
       <Position>7</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="38" parent="16" name="PRIMARY">
+    <key id="39" parent="16" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

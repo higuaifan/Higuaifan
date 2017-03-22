@@ -50,6 +50,7 @@ public class studentController extends Controller {
         String pwd = getPara("password");
         List U = student.loginStudent(user, pwd);
         if (U.size() > 0) {
+            setSessionAttr("type", "student");
             setSessionAttr("user", user);
             setSessionAttr("pwd", pwd);
             Object V = U.get(0);

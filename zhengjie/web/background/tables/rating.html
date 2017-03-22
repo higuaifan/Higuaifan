@@ -1,5 +1,10 @@
-
-<div class="rating">
+<div class="rating segment">
+    <div class="ui inverted dimmer">
+        <div class="ui text loader">Loading</div>
+    </div>
+    <div class="rules">
+        <h1>评分规则</h1>
+    </div>
     <table class="ui single line table">
         <thead>
         <tr>
@@ -18,6 +23,19 @@
 </div>
 
 <script>
+    $.get('/rules/index', function (data) {
+        var str = '<div class="ui list">';
+
+        for (var i = 0; i < data.length; i++) {
+            var t = i + 1;
+            str += '<div class="item" data-id="' + data[i].id + '">' + t + '.' + data[i].rule + '</div>';
+        }
+
+        str += '</div>';
+
+        $(".rules").append(str);
+    });
+
     var getStars = function (dom) {
         return dom.children('.active').length;
     };
@@ -50,30 +68,37 @@
         });
     });
 
+    $('.segment').dimmer({
+        onShow: function () {
+            var list = $('.ui.rating');
+            var count = 0;
+            var len=list.length;
+//            var len = 2;
+            for (var i = 0; i < len; i++) {
+                var id = $(list[i]).parent().prev()[0].getAttribute('data-id');
+                var obj = {rater: id - 0, score: getStars($(list[i]))};
+                $.ajax({
+                    type: 'post',
+                    url: '/rate/insert',
+                    data: obj,
+//                    async: false,
+                    success: function (res) {
+                        count++;
+                        if (count === len) {
+                            $('.segment').dimmer('hide');
+                            swal('评价成功');
+                        } else {
+
+                        }
+                    }
+                });
+            }
+
+        }
+    });
+
     $("#saveRate").click(function () {
-
-        //todo 等待
-
-        var list = $('.ui.rating');
-        var count = 0;
-        for (var i = 0; i < list.length; i++) {
-            var id = $(list[i]).parent().prev()[0].getAttribute('data-id');
-            var obj = {rater: id - 0, score: getStars($(list[i]))};
-            $.ajax({
-                type: 'post',
-                url: '/rate/insert',
-                data: obj,
-                async: false,
-                success: function (res) {
-                    count++;
-                }
-            });
-        }
-        if (count === list.length) {
-            swal('评价成功');
-        } else {
-            swal('评价失败');
-        }
+        $('.segment').dimmer('show');
     });
 
 </script>

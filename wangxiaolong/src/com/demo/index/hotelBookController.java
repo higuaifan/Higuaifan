@@ -11,7 +11,7 @@ import java.util.Date;
  * 能不能跑,全部看命.
  */
 public class hotelBookController extends Controller {
-    HotelBook hotelBook = new HotelBook();
+    private HotelBook hotelBook = new HotelBook();
 
 
     public void index() {
@@ -21,15 +21,9 @@ public class hotelBookController extends Controller {
 
     public void insert() {
         int hotel = getParaToInt("hotel");
-
-
-        Integer visitor =getSessionAttr("id");
-
-
+        Integer hotelValue =getSessionAttr("id");
         String time = getPara("time");
-
-
-        renderJson(hotelBook.insertHotelBook(hotel, visitor.intValue(),time));
+        renderJson(hotelBook.insertHotelBook(hotel, hotelValue,time));
     }
 
     public void update() {

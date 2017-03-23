@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="MySQL - wangxiaolong@localhost">
+<dataSource name="aliyun">
   <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
     <root id="1"/>
     <schema id="2" parent="1" name="wangxiaolong">
@@ -9,165 +9,190 @@
     <schema id="3" parent="1" name="information_schema"/>
     <schema id="4" parent="1" name="mysql"/>
     <schema id="5" parent="1" name="performance_schema"/>
-    <schema id="6" parent="1" name="sakila"/>
-    <schema id="7" parent="1" name="sys"/>
-    <schema id="8" parent="1" name="world"/>
-    <schema id="9" parent="1" name="zhenjie"/>
-    <table id="10" parent="2" name="hotel"/>
-    <table id="11" parent="2" name="hotel_book"/>
-    <table id="12" parent="2" name="travel_news"/>
-    <table id="13" parent="2" name="view_hotel"/>
-    <table id="14" parent="2" name="views"/>
-    <table id="15" parent="2" name="visitor"/>
-    <column id="16" parent="10" name="id">
+    <schema id="6" parent="1" name="zhenjie"/>
+    <schema id="7" parent="1" name="jiajiafood"/>
+    <schema id="8" parent="1" name="music"/>
+    <schema id="9" parent="1" name="news"/>
+    <schema id="10" parent="1" name="qdm112455407_db"/>
+    <schema id="11" parent="1" name="test"/>
+    <table id="12" parent="2" name="admin"/>
+    <table id="13" parent="2" name="hotel"/>
+    <table id="14" parent="2" name="hotel_book"/>
+    <table id="15" parent="2" name="travel_news"/>
+    <table id="16" parent="2" name="view_hotel"/>
+    <table id="17" parent="2" name="views"/>
+    <table id="18" parent="2" name="visitor"/>
+    <column id="19" parent="12" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="17" parent="10" name="hotel_name">
+    <column id="20" parent="12" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="18" parent="10" name="address">
+    <column id="21" parent="12" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="19" parent="10" name="phone">
+    <key id="22" parent="12" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="23" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="13" name="hotel_name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="25" parent="13" name="address">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="26" parent="13" name="phone">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="20" parent="10" name="message">
+    <column id="27" parent="13" name="message">
       <Position>5</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="21" parent="10" name="pic">
+    <column id="28" parent="13" name="pic">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="22" parent="10" name="x">
+    <column id="29" parent="13" name="x">
       <Position>7</Position>
       <DataType>varchar(20)|0</DataType>
     </column>
-    <column id="23" parent="10" name="y">
+    <column id="30" parent="13" name="y">
       <Position>8</Position>
       <DataType>varchar(20)|0</DataType>
     </column>
-    <key id="24" parent="10" name="PRIMARY">
+    <key id="31" parent="13" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="25" parent="11" name="id">
+    <column id="32" parent="14" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="26" parent="11" name="hotel">
+    <column id="33" parent="14" name="hotel">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="27" parent="11" name="visitor">
+    <column id="34" parent="14" name="visitor">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="28" parent="11" name="time">
+    <column id="35" parent="14" name="time">
       <Position>4</Position>
       <DataType>date|0</DataType>
     </column>
-    <key id="29" parent="11" name="PRIMARY">
+    <key id="36" parent="14" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="30" parent="12" name="id">
+    <column id="37" parent="15" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="31" parent="12" name="title">
+    <column id="38" parent="15" name="title">
       <Position>2</Position>
       <DataType>varchar(225)|0</DataType>
     </column>
-    <column id="32" parent="12" name="message">
+    <column id="39" parent="15" name="message">
       <Position>3</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="33" parent="12" name="pic">
+    <column id="40" parent="15" name="pic">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="34" parent="12" name="time">
+    <column id="41" parent="15" name="time">
       <Position>5</Position>
       <DataType>time|0</DataType>
     </column>
-    <key id="35" parent="12" name="PRIMARY">
+    <column id="42" parent="15" name="hotel">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="43" parent="15" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="36" parent="13" name="id">
+    <column id="44" parent="16" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="37" parent="13" name="hotel_id">
+    <column id="45" parent="16" name="hotel_id">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="38" parent="13" name="view_id">
+    <column id="46" parent="16" name="view_id">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="39" parent="13" name="PRIMARY">
+    <key id="47" parent="16" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="40" parent="14" name="id">
+    <column id="48" parent="17" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="41" parent="14" name="view">
+    <column id="49" parent="17" name="view">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="42" parent="14" name="message">
+    <column id="50" parent="17" name="message">
       <Position>3</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="43" parent="14" name="address">
+    <column id="51" parent="17" name="address">
       <Position>4</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="44" parent="14" name="pic">
+    <column id="52" parent="17" name="pic">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="45" parent="14" name="PRIMARY">
+    <key id="53" parent="17" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="46" parent="15" name="id">
+    <column id="54" parent="18" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="47" parent="15" name="user_name">
+    <column id="55" parent="18" name="user_name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="48" parent="15" name="password">
+    <column id="56" parent="18" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="49" parent="15" name="phone">
+    <column id="57" parent="18" name="phone">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="50" parent="15" name="PRIMARY">
+    <key id="58" parent="18" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

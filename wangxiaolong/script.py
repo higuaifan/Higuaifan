@@ -163,7 +163,7 @@ def model(table, cur_list):
 
 
 
-conn = pymysql.connect(user='root', passwd='root', host='localhost',
+conn = pymysql.connect(user='zxmysql', passwd='ZX123456zx!', host='rm-wz9h86151kd3mlx1io.mysql.rds.aliyuncs.com',
                        db='wangxiaolong')  # 链接数据库
 cur = conn.cursor()  # 生成游标
 cur.execute("show tables")  # 表名

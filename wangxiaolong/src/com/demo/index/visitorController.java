@@ -27,10 +27,10 @@ public class visitorController extends Controller {
             setSessionAttr("pwd", pwd);
             Object V= U.get(0);
             setSessionAttr("id", ((Visitor) V).getId());
-            render("success");
+            renderJson("{\"data\":\"success\"}");
 
         }else{
-            render("error");
+            renderJson("{\"data\":\"error\"}");
         }
 
     }

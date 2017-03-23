@@ -13,7 +13,7 @@ public class HotelBook extends BaseHotelBook<HotelBook> {
 	public static final HotelBook dao = new HotelBook().dao();
 	
 	public List getHotelBook(){
-		return HotelBook.dao.find("select * from hotelBook");
+		return HotelBook.dao.find("select hotel_book.id,hotel_book.id,hotel_name as hotel,user_name as visitor,time from hotel_book,hotel,visitor where hotel.id=hotel_book.hotel and visitor.id =hotel_book.visitor");
 	}
 
 	public boolean insertHotelBook(int hotel,int visitor,String time) {

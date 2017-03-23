@@ -54,4 +54,13 @@ public abstract class BaseTravelNews<M extends BaseTravelNews<M>> extends Model<
 		return get("time");
 	}
 
+	public M setHotel(java.lang.Integer hotel) {
+		set("hotel", hotel);
+		return (M)this;
+	}
+
+	public java.lang.Integer getHotel() {
+		return get("hotel");
+	}
+
 }

@@ -12,6 +12,8 @@ conn = pymysql.connect(user='zxmysql', passwd='ZX123456zx!', host='rm-wz9h86151k
 
 
 def fh_get_type_and_link(url):
+    print type_list
+
     html = requests.get(url)
     string = html.content
     soup = BeautifulSoup(string, "html.parser")
@@ -19,11 +21,14 @@ def fh_get_type_and_link(url):
     for h in h2:
         a = h.a
         try:
-            fh_get_link(a.attrs['href'], h.text)
+            # 添加
+            if check_type(h.text):
+                insert_type(h.text)
+
+            # fh_get_link(a.attrs['href'], h.text)
             # print h.text
         except:
             continue
-
 
 def fh_get_link(url, type):
     count = 0
@@ -40,7 +45,6 @@ def fh_get_link(url, type):
                 title = a.text
                 fh_get_html(a.attrs['href'], title, type)
                 # print a.text
-
 
 def fh_get_html(url, title, type):
     html = requests.get(url)
@@ -64,7 +68,6 @@ def fh_get_html(url, title, type):
     except:
         return
 
-
 def insert(title, content, img, web, text_type):
     cur = conn.cursor()
     t = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
@@ -74,10 +77,45 @@ def insert(title, content, img, web, text_type):
         cur.execute(sql, (title, content, t, img, web, text_type))
         conn.commit()
     except:
-        print "error"
+        print
+        "error"
     cur.close()
 
 
+# type模块
+def insert_type(new_type):
+    cur = conn.cursor()
+    sql = 'insert into type(name) values (%s)'
+    # print title, content, img, web, text_type
+    try:
+        cur.execute(sql, (new_type))
+        conn.commit()
+    except:
+        print "error"
+    cur.close()
+
+def get_type():
+    sql = 'select `name` from type'
+    cur = conn.cursor()
+    cur.execute(sql, ())
+    result = cur.fetchall()
+    list = []
+    for r in result:
+        list.append(r[0].encode('utf-8'))
+    return list
+
+def check_type(new_type):
+    flag=True
+    for t in type_list:
+        if t.decode("utf-8")==new_type:
+            flag=False
+    return flag
+
+
+
+
+type_list = get_type()
 fh_get_type_and_link('http://www.ifeng.com/daohang/')
+get_type()
 conn.commit()
 conn.close()

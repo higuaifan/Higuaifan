@@ -47,13 +47,17 @@ def get(json_data):
     for i in item:
         base_info = i['baseinfo']
         i_name = i['name']
+        price_arr = i['price']
+        price = price_arr['actPrice']
         image = base_info['picUrl']
         item_url = base_info['itemUrl']
         print image
         print item_url
         short_name = i_name['shortName']
         print short_name
-        insert(short_name, image, item_url)
+        print price
+        
+        # insert(short_name, image, item_url)
 
 
 fh_get_type_and_link('https://ju.taobao.com/')

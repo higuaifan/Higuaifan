@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>海淘推荐</title>
+    <script src="plugin/jquery-3.1.1.min.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .item {
+            display: inline-block;
+            margin: 20px;
+            height: 220px;
+            width: 220px;
+        }
+
+        .img img {
+            max-height: 185px;
+            max-width: 200px;
+        }
+
+        .link {
+            margin-top: 10px;
+        }
+
+        .from {
+            display: inline-block;
+        }
+
+        .button {
+            float: right;
+            padding: 8px 17px;
+            color: #fff;
+            background: #f16969;
+            text-decoration: none;
+        }
+
+        .price{
+            padding: 5px;
+        }
+
+        #head{
+            height: 32px;
+            width: 100%;
+            background-color: #414141;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="head">
+
+</div>
+<div id="main">
+    <div id="items">
+
+    </div>
+</div>
+
+</body>
+</html>
+
+<script>
+    $.get('/getShopping.php', function (data) {
+        var item = $('#items');
+        data = JSON.parse(data);
+        data = data.data;
+
+        for (var i = 0; i < data.length; i++) {
+            item.append(createItem(data[i]));
+        }
+    });
+
+    var createItem = function (data) {
+        var item = document.createElement('div');
+        item.className = 'item';
+        item.innerHTML = '<div class="img">' +
+            '<img src="' + data.image + '" alt="">' +
+            '</div>' +
+            '<div class="title">' +
+            '<span>' + data.title + '</span>' +
+            '</div>' +
+            '<div class="price"><b>价格:' + data.price + '</b></div>' +
+            '<div class="link">' +
+            '<div class="from">来自：' + data.from + '</div>' +
+            '<a class="button" href="' + data.url + '">直达链接</a>' +
+            '</div>';
+        return item;
+    }
+
+</script>

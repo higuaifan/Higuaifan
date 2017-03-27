@@ -12,7 +12,6 @@ conn = pymysql.connect(user='zxmysql', passwd='ZX123456zx!', host='rm-wz9h86151k
 
 
 def fh_get_type_and_link(url):
-    print type_list
 
     html = requests.get(url)
     string = html.content
@@ -22,10 +21,10 @@ def fh_get_type_and_link(url):
         a = h.a
         try:
             # 添加
-            if check_type(h.text):
-                insert_type(h.text)
+            # if check_type(h.text):
+            #     insert_type(h.text)
 
-            # fh_get_link(a.attrs['href'], h.text)
+            fh_get_link(a.attrs['href'], h.text)
             # print h.text
         except:
             continue

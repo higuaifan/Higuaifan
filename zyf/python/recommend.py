@@ -1,5 +1,7 @@
 # -*- coding: UTF-8 -*-
 import random
+
+import math
 import pymysql
 import os
 from prettytable import PrettyTable
@@ -79,11 +81,11 @@ def print_list(num_list):
     i = 24
     title = ['矩阵']
     while i > 0:
-        title.append(24 - i),
+        title.append(24 - i + 3),
         i -= 1
     table = PrettyTable(title)
     for list in num_list:
-        items = [i]
+        items = [i + 3]
         for item in list:
             items.append(item)
         table.add_row(items)
@@ -107,6 +109,7 @@ def real_symmetry_matrix(num_list, table):
     for n in num_list:
         num = n - 3  # 获取编号
         line = table[num]  # 该行
+        table[num][num] += 1
         for n2 in num_list_back_up:
             num_back_up = n2 - 3
             if num_back_up != num:
@@ -115,12 +118,63 @@ def real_symmetry_matrix(num_list, table):
     return table
 
 
+def cos_table(table):
+    i = 0
+    for line in table:
+        num = line[i]
+        j = 0
+        for item in line:
+            if j != i:
+                if num * table[j][j] != 0:
+                    line[j] = round(item / math.sqrt(num * table[j][j]), 2)
+            j += 1
+        i += 1
+    return table
+
+
+def find_no(user):
+    no = []
+    i = 26
+    while i >= 3:
+        flag = True
+        for u in user:
+            if u == i:
+                flag = False
+                break
+        if flag:
+            no.append(i)
+        i -= 1
+    return sorted(no)
+
+
+def set_list(own, no, table):
+    rank_list = []
+    for n in no:
+        num = 0
+        for o in own:
+            num += table[o - 3][n - 3]
+        rank_list.append(round(num, 2))
+    return rank_list
+
+
+def get_max(rank_list, no):
+    max_num = rank_list[0]
+    index = 0
+    i = 0
+    for r in rank_list:
+        if r > max_num:
+            max_num = r
+            index = i
+        i += 1
+    return no[index]
+
+
 num_list = create_list(24)
 
 # 获取所有用户爱好信息
 user = []
 i = 1
-while i < 20:
+while i < 5:
     user.append(select(i))
     i += 1
 
@@ -132,3 +186,17 @@ for u in user:
     num_list = real_symmetry_matrix(u, num_list)
 
 print_list(num_list)
+cos_table(num_list)
+print_list(num_list)
+
+
+
+
+user = select(1)  # 选一个用户
+print user
+no_user = find_no(user)
+print no_user
+rank_list = set_list(user, no_user, num_list)
+print rank_list
+max_item = get_max(rank_list, no_user)
+print max_item

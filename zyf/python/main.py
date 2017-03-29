@@ -12,7 +12,6 @@ conn = pymysql.connect(user='zxmysql', passwd='ZX123456zx!', host='rm-wz9h86151k
 
 
 def fh_get_type_and_link(url):
-
     html = requests.get(url)
     string = html.content
     soup = BeautifulSoup(string, "html.parser")
@@ -29,6 +28,7 @@ def fh_get_type_and_link(url):
         except:
             continue
 
+
 def fh_get_link(url, type):
     count = 0
     html = requests.get(url)
@@ -44,6 +44,7 @@ def fh_get_link(url, type):
                 title = a.text
                 fh_get_html(a.attrs['href'], title, type)
                 # print a.text
+
 
 def fh_get_html(url, title, type):
     html = requests.get(url)
@@ -63,21 +64,21 @@ def fh_get_html(url, title, type):
             content = t.text
         for i in img:
             img_url = i.attrs['src']
-        insert(title, content[:2500], img_url, '凤凰网', type)
+        insert(title, content[:2500], img_url, '凤凰网', type, url)
     except:
         return
 
-def insert(title, content, img, web, text_type):
+
+def insert(title, content, img, web, text_type, url):
     cur = conn.cursor()
     t = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    sql = 'insert into new(title,content,`time`,img,`from`,type) values (%s,%s,%s,%s,%s,%s)'
-    # print title, content, img, web, text_type
+    sql = 'insert into new(title,content,`time`,img,`from`,type,link) values (%s,%s,%s,%s,%s,%s,%s)'
     try:
-        cur.execute(sql, (title, content, t, img, web, text_type))
+        cur.execute(sql, (title, content, t, img, web, text_type, url))
         conn.commit()
+        print title, content, img, web, text_type, url
     except:
-        print
-        "error"
+        print "error"
     cur.close()
 
 
@@ -93,6 +94,7 @@ def insert_type(new_type):
         print "error"
     cur.close()
 
+
 def get_type():
     sql = 'select `name` from type'
     cur = conn.cursor()
@@ -103,14 +105,13 @@ def get_type():
         list.append(r[0].encode('utf-8'))
     return list
 
+
 def check_type(new_type):
-    flag=True
+    flag = True
     for t in type_list:
-        if t.decode("utf-8")==new_type:
-            flag=False
+        if t.decode("utf-8") == new_type:
+            flag = False
     return flag
-
-
 
 
 type_list = get_type()

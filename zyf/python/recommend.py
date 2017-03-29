@@ -169,12 +169,31 @@ def get_max(rank_list, no):
     return no[index]
 
 
+def set_user_may_like(i):
+    visitor = select(i)  # 选一个用户
+    print visitor
+    no_user = find_no(visitor)
+    print no_user
+    rank_list = set_list(visitor, no_user, num_list)
+    print rank_list
+    max_item = get_max(rank_list, no_user)
+    print max_item
+    cur = conn.cursor()
+    sql = 'update visitor set `may_like`=%s ,`is_recommend`="0" where id = %s'
+    try:
+        cur.execute(sql, (str(max_item), int(i)))
+        conn.commit()
+    except:
+        print "error"
+    cur.close()
+
+
 num_list = create_list(24)
 
 # 获取所有用户爱好信息
 user = []
 i = 1
-while i < 5:
+while i < 100:
     user.append(select(i))
     i += 1
 
@@ -189,14 +208,7 @@ print_list(num_list)
 cos_table(num_list)
 print_list(num_list)
 
-
-
-
-user = select(1)  # 选一个用户
-print user
-no_user = find_no(user)
-print no_user
-rank_list = set_list(user, no_user, num_list)
-print rank_list
-max_item = get_max(rank_list, no_user)
-print max_item
+i = 100
+while i < 110:
+    set_user_may_like(i)
+    i += 1

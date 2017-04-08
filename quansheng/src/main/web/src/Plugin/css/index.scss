@@ -63,28 +63,7 @@ body {
   }
 }
 
-#right {
-  width: 480px;
-  #right-img {
-    height: 100px;
-    width: 480px;
-    overflow: hidden;
 
-  }
-  #scroll-div{
-    display: flex;
-    flex-wrap: nowrap;
-    position: relative;
-  }
-  .images {
-    width: 100px;
-    margin:0 10px;
-    img {
-      width: 100px;
-      height: 100px;
-    }
-  }
-}
 
 #more {
   color: #b84804;
@@ -114,21 +93,18 @@ body {
   }
 }
 
-
-
 #scroll {
   display: flex;
   justify-content: center;
-  span{
+  span {
     margin: 5px 15px;
     font-size: 20px;
-    &:hover{
+    &:hover {
       cursor: pointer;
       color: #b84804;
     }
   }
 }
-
 
 #foot {
   height: 30px;
@@ -136,9 +112,26 @@ body {
   background: linear-gradient(#7b7b7b, #505050);
 }
 
-.tag2{
+.tag2 {
   line-height: 20px;
   float: right;
   color: white;
   padding: 5px 5px;
+}
+
+#my-thumbs-list {
+  li {
+    list-style-type: none;
+  }
+  img {
+    height: 200px;
+    padding: 0 10px;
+    width: 200px;
+  }
+}
+
+#my-thumbs-list {
+  overflow: auto;
+  width: 660px;
+  height: auto;
 }

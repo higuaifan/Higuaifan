@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery多功能滚动预览缩略图特效插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" href="css/style.css">
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+	<!-- plugin stylesheet -->
+	<link rel="stylesheet" href="css/jquery.mThumbnailScroller.css">
+	<style>
+		.content{
+			overflow: auto;
+			position: relative;
+			padding: 10px;
+			background-color: #333;
+			margin: 20px;
+			width: 50%;
+			height: auto;
+			float: left;
+		}
+		.content li{
+			margin: 4px;
+			overflow: hidden;
+		}
+		.content li a{
+			display: inline-block;
+			border: 7px solid rgba(255,255,255,.1);
+		}
+		.content.light, .content.light .mTSButton{ background-color: #c2beb2; }
+		.content.light li a{ border: 7px solid rgba(255,255,255,.4); }
+		#content-1, #content-2{
+			width: auto;
+			height: 600px;
+		}
+		#content-1 ul li:first-child{ margin-top: 20px; }
+		#content-1 ul li:last-child{ margin-bottom: 20px; }
+		#content-2{ padding: 55px 10px; }
+		#content-3 .mTSButton{ background-color: #333; }
+		#content-5{ background-color: #444; }
+		#content-6{ background-color: transparent; }
+		#content-6 .mTSButton{
+			background-color: rgba(0,0,0,.7);
+			-moz-border-radius: 48px; -webkit-border-radius: 48px; border-radius: 48px;
+		}
+		#content-6 .mTSButtonLeft{ left: 5px; }
+		#content-6 .mTSButtonRight{ right: 5px; }
+	</style>
+</head>
+<body>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			<h1>jQuery多功能滚动预览缩略图特效插件 <span>An image scroller plugin that can be used as standalone or along side lightboxes, gallery scripts etc</span></h1>
+			<div class="htmleaf-links">
+				<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+				<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/jQuery/Slideshow-Scroller/201506202071.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+			</div>
+		</header>
+
+		<div id="demo">
+			<section id="examples">
+				
+				<!-- demo content -->
+				<div id="content-1" class="content">
+					<ul>
+						<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+					</ul>
+				</div>
+				<!-- -//- -->
+				
+				<!-- demo content -->
+				<div id="content-2" class="content light">
+					<ul>
+						<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+					</ul>
+				</div>
+				<!-- -//- -->
+				
+				<!-- demo content -->
+				<div id="content-3" class="content">
+					<ul>
+						<li><a href="#"><img src="thumbnails/img1.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img2.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img4.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img5.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img6.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img8.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img9.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img10.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img12.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img13.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img14.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img16.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img17.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img18.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img19.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+					</ul>
+				</div>
+				<!-- -//- -->
+				
+				<!-- demo content -->
+				<div id="content-4" class="content light">
+					<ul>
+						<li><a href="#"><img src="thumbnails/img1.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img2.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img4.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img5.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img6.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img8.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img9.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img10.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img12.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img13.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img14.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+					</ul>
+				</div>
+				<!-- -//- -->
+				
+				<!-- demo content -->
+				<div id="content-5" class="content">
+					<ul>
+						<li><a href="#"><img src="thumbnails/img1.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img2.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img4.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img5.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img6.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img8.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img9.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img10.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img12.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img13.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img14.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img16.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img17.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img18.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img19.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+					</ul>
+				</div>
+				<!-- -//- -->
+				
+				<!-- demo content -->
+				<div id="content-6" class="content">
+					<ul>
+						<li><a href="#"><img src="thumbnails/img1.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img2.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img3.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img4.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img5.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img6.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img7.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img8.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img9.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img10.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img11.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img12.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img13.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img14.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img15.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img16.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img17.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img18.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img19.jpg" /></a></li>
+						<li><a href="#"><img src="thumbnails/img20.jpg" /></a></li>
+					</ul>
+				</div>
+				<!-- -//- -->
+				
+			</section>
+		</div>
+		<div class="related">
+		    <h3>如果你喜欢这个插件，那么你可能也喜欢:</h3>
+		    <a href="http://www.htmleaf.com/jQuery/Slideshow-Scroller/201504191707.html">
+			  <img src="related/1.jpg" width="300" alt="超酷响应式带缩略图的jQuery轮播图插件"/>
+			  <h3>超酷响应式带缩略图的jQuery轮播图插件</h3>
+			</a>
+			<a href="http://www.htmleaf.com/jQuery/Lightbox-Dialog/20141125588.html">
+			  <img src="related/2.jpg" width="300" alt="jQuery和css3长条照片风格lightbox插件"/>
+			  <h3>jQuery和css3长条照片风格lightbox插件</h3>
+			</a>
+		</div>
+	</div>
+	
+	<script src="http://libs.useso.com/js/jquery/1.11.0/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="../js/minified/jquery-1.11.0.min.js"><\/script>')</script>
+	<script src="js/jquery.mThumbnailScroller.js"></script>
+	<script>
+		(function($){
+			$(window).load(function(){
+				
+				$("#content-1").mThumbnailScroller({
+					axis:"y",
+					type:"hover-precise"
+				});
+				
+				$("#content-2").mThumbnailScroller({
+					axis:"y",
+					type:"click-thumb",
+					theme:"buttons-out"
+				});
+				
+				$("#content-3").mThumbnailScroller({
+					type:"click-50",
+					theme:"buttons-in"
+				});
+				
+				$("#content-4").mThumbnailScroller({
+					theme:"hover-classic"
+				});
+				
+				$("#content-5").mThumbnailScroller({
+					type:"hover-precise"
+				});
+				
+				$("#content-6").mThumbnailScroller({
+					type:"click-25",
+				});
+				
+			});
+		})(jQuery);
+	</script>
+</body>
+</html>

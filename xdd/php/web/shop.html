@@ -6,18 +6,24 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>海淘推荐</title>
+    <link rel="stylesheet" href="plugin/styles.css">
     <script src="plugin/jquery-3.1.1.min.js"></script>
+
     <style>
-        body{
+        body {
             margin: 0;
             padding: 0;
         }
 
+        #items {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
         .item {
-            display: inline-block;
+            /*display: inline-block;*/
             margin: 20px;
-            height: 220px;
-            width: 220px;
+            width: 250px;
         }
 
         .img img {
@@ -41,16 +47,37 @@
             text-decoration: none;
         }
 
-        .price{
+        .price {
             padding: 5px;
         }
 
-        #head{
+        #head {
             height: 32px;
             width: 100%;
             background-color: #414141;
         }
 
+        .title {
+            display: block;
+            width: 240px;
+            font-size: 20px;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        #more{
+            margin: auto auto 20px;
+            height: 40px;
+            width: 80vw;
+            line-height: 40px;
+            text-align: center;
+            background-color: #666666;
+            color: white;
+        }
+        #more:hover{
+            cursor:pointer;
+        }
     </style>
 </head>
 <body>
@@ -62,37 +89,86 @@
     <div id="items">
 
     </div>
+    <div id="more">点击显示更多</div>
 </div>
 
 </body>
 </html>
 
 <script>
-    $.get('/getShopping.php', function (data) {
-        var item = $('#items');
-        data = JSON.parse(data);
-        data = data.data;
 
-        for (var i = 0; i < data.length; i++) {
-            item.append(createItem(data[i]));
-        }
+    var h = document.documentElement.clientHeight;
+    var w = document.body.clientWidth;
+
+    console.log(Math.floor(w / 290));
+    console.log(Math.floor(h / 415));
+
+    var start = 0;
+    var limit = Math.floor(w / 290) * Math.floor(h / 415);
+
+    $("body").on("mouseover mouseout", ".post-module", function () {
+        $(this).find('.description').stop().animate({
+            height: 'toggle',
+            opacity: 'toggle'
+        }, 300);
+    }).on("click","#more",function(){
+        getNews();
     });
 
-    var createItem = function (data) {
+
+    var getNews=function(){
+        $.post('http://localhost/getShopping.php', {"start": start, "limit":limit}, function (data) {
+            var item = $('#items');
+            data = JSON.parse(data);
+            data = data.data;
+            if(data.length<limit){
+                $("#more").remove();
+            }
+            for (var i = 0; i < data.length; i++) {
+                item.append(createItem2(data[i]));
+            }
+            start += limit;
+        });
+    };
+    getNews();
+
+
+
+    var createItem2 = function (data) {
         var item = document.createElement('div');
         item.className = 'item';
-        item.innerHTML = '<div class="img">' +
-            '<img src="' + data.image + '" alt="">' +
-            '</div>' +
-            '<div class="title">' +
-            '<span>' + data.title + '</span>' +
-            '</div>' +
-            '<div class="price"><b>价格:' + data.price + '</b></div>' +
-            '<div class="link">' +
-            '<div class="from">来自：' + data.from + '</div>' +
-            '<a class="button" href="' + data.url + '">直达链接</a>' +
-            '</div>';
+        item.innerHTML = "<div class='column'>" +
+            "<div class='post-module'>" +
+            "<div class='thumbnail'>" +
+            "<img src='" + data.image + "'>" +
+            "</div>" +
+            "<div class='post-content'>" +
+            "<div class='category'>" + data.from + "</div>" +
+            "<p title='" + data.title + "' class='title'>" + countTitle(data.title) + "</p>" +
+            "<h2 class='sub_title'><b>价格:" + data.price + "</b></h2>" +
+            "<p class='description'>" + data.describe + "</p>" +
+            "<div class='post-meta'>" +
+            "<span class='timestamp'>" +
+            "<i class='fa fa-clock-o'></i>" +
+            data.create_time.split(" ")[0] +
+            "</span>" +
+            "<span class='comments'>" +
+            "    <i class='fa fa-comments'></i>" +
+            "    <a href='" + data.url + "'>直达链接</a>" +
+            "</span>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>";
         return item;
+    };
+
+
+    var countTitle = function (title) {
+        if (title.length > 10) {
+            title = title.slice(0, 7) + "...";
+        }
+        return title;
     }
 
 </script>

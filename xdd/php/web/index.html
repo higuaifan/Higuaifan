@@ -34,6 +34,10 @@
         line-height: 60px;
     }
 
+    #title>span:hover{
+        cursor: pointer;
+    }
+
     #body > div {
         margin: 12px auto;
         width: 310px;
@@ -52,24 +56,33 @@
         height: 20px;
     }
 
-    #button,#visitor {
+    #button,#visitor,#registerButton {
         border-radius: 5px;
         padding: 5px;
         width: 65px !important;
         background-color: #36CB77;
         display: inline-block;
     }
+    #registerButton{
+        display: none;
+    }
 
-    #button:hover,#visitor:hover {
+    #button:hover,#visitor:hover,#registerButton:hover {
         cursor: pointer;
     }
 
+    .choose{
+        color: #000000;
+    }
 
 
 </style>
 <body>
 <div id="box">
-    <div id="title">登陆</div>
+    <div id="title">
+        <span class="choose" id="login">登陆</span>
+        <span id="register">注册</span>
+    </div>
     <div id="body">
         <div class="msg">帐号</div>
         <div class="input">
@@ -79,7 +92,8 @@
         <div class="input">
             <input type="password" id="pwd">
         </div>
-        <div id="button">确定</div>
+        <div id="button">登陆</div>
+        <div id="registerButton">注册</div>
         <div id="visitor">游客登陆</div>
     </div>
 </div>
@@ -98,7 +112,54 @@
         })
     });
 
+    $("#registerButton").click(function(){
+        var data = {'user': $('#user').val(), 'pwd': $('#pwd').val()};
+        $.post('/add.php', data, function (res) {
+            if (res == 'true') {
+                $.post('/login.php', data, function (res) {
+                    if (res == 'true') {
+                        window.location.href = '/web/shop.html';
+                    } else {
+                        alert('帐号密码错误！');
+                    }
+                })
+            } else {
+                alert('注册失败！');
+            }
+        })
+    });
+
     $("#visitor").click(function(){
         window.location.href = '/web/shop.html';
     });
+
+    $("#add").click(function(){
+        var data = {'user': $('#user').val(), 'pwd': $('#pwd').val()};
+        $.post('/add.php', data, function (res) {
+            if (res == 'true') {
+                window.location.href = '/web/shop.html';
+            } else {
+                alert('帐号密码错误！');
+            }
+        })
+    });
+
+
+    $("#register").click(function(){
+        $("#login").removeClass("choose");
+        $("#register").addClass("choose");
+        $("#pwd").attr("type","text");
+        $("#registerButton").css("display","inline-block");
+        $("#button").hide();
+
+    });
+    
+    $("#login").click(function () {
+        $("#login").addClass("choose");
+        $("#register").removeClass("choose");
+        $("#pwd").attr("type","password");
+        $("#registerButton").hide();
+        $("#button").css("display","inline-block");
+    });
+
 </script>

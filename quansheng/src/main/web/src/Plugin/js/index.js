@@ -1,5 +1,3 @@
-
-
 $("#next").click(function () {
     let firstShow = $(".show").eq(0);
 
@@ -26,11 +24,25 @@ $("#prev").click(function () {
 
 });
 
-(function($){
-    $(window).load(function(){
+(function ($) {
+    $(window).load(function () {
         $("#my-thumbs-list").mThumbnailScroller({
-            axis:"x", //change to "y" for vertical scroller
-            type:"click-thumb"
+            axis: "x", //change to "y" for vertical scroller
+            type: "click-thumb"
         });
     });
 })(jQuery);
+
+var i = 0;
+
+var refresh=function() {
+    $(".section-thumbnail").eq(i).click();
+    if (i < 4)
+        i++;
+    else
+        i = 0;
+
+};
+
+
+window.setInterval(refresh, 3000);

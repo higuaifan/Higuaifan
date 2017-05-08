@@ -1,0 +1,128 @@
+<table class="ui fixed table">
+    <thead id="head"></thead>
+    <tbody id="tb"></tbody>
+</table>
+<div id="hi-alert">
+    <div id="hi-alert-body">
+        <div class="ui labeled input">
+            <div class="ui label">
+                帐号
+            </div>
+            <input id="user" type="text" placeholder="这里输入帐号">
+        </div>
+        <div class="ui labeled input">
+            <div class="ui label">
+                密码
+            </div>
+            <input id="pwd" type="text" placeholder="这里输入密码">
+        </div>
+        <div class="ui selection dropdown">
+            <input type="hidden" name="power" id="power">
+            <i class="dropdown icon"></i>
+            <div class="default text">权限选择</div>
+            <div class="menu">
+                <div class="item" data-value="0">普通游客</div>
+                <div class="item" data-value="1">会员</div>
+            </div>
+        </div>
+        <div>
+            <button class="ui button" id="sure">确定</button>
+            <button class="ui button" id="cancel">取消</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    var createShopper = function (data) {
+        var str;
+        var head = "<tr><th>id</th> <th>帐号</th> <th>密码</th><th>类型</th><th><button class='ui button add'>新增</button></th></tr>";
+        $("#head").html(head);
+        for (var i = 0; i < data.length; i++) {
+            var t = data[i];
+            str += "<tr><td>" + t.id + "</td><td>" + t.name + "</td><td>" + t.password + "</td><td>" + t.type + "</td><td><button class='ui button modify'>修改</button><button class='ui button delete'>删除</button></td></tr>"
+        }
+        $("#tb").html(str);
+    };
+
+    $.post('server/getShopper.php', function (res) {
+        createShopper(res.data);
+    });
+
+
+    $("body").off().on("click", ".add", function () {
+        console.log("click");
+        var body = document.getElementsByTagName("body")[0];
+        body.classList.add("hi-alert-body");
+        document.getElementById("hi-alert").style.display = "block";
+    }).on("click", "#sure", function () {
+        var data = {
+            "name": $("#user").val(),
+            "password": $("#pwd").val(),
+            "type": $("#power").val()
+        };
+
+        if ($("#user").val() == "" || $("#pwd").val() == "") {
+            alert("请输入帐号密码！");
+        } else {
+            $.post('server/addShopper.php', data, function (res) {
+                if (res == 'true') {
+                    alert("添加成功！");
+                    $("#right").load("table/shopper.html");
+                } else {
+                    alert('添加失败！');
+                }
+            });
+        }
+    }).on("click", ".delete", function () {
+        var id = $(this).parent().parent().children().eq(0).html();
+        $.post('server/deleteShopper.php', {"id": id}, function (res) {
+            if (res == 'true') {
+                alert("删除成功！");
+                $("#right").load("table/shopper.html");
+            } else {
+                alert('删除失败！');
+            }
+        });
+    }).on("click", ".modify", function () {
+        var id = $(this).parent().parent().children().eq(0).html();
+        var name = $(this).parent().parent().children().eq(1).html();
+        var pwd = $(this).parent().parent().children().eq(2).html();
+        var type = $(this).parent().parent().children().eq(3).html();
+        $("#user").val(name);
+        $("#pwd").val(pwd);
+        $(".item").eq(type).click();
+        $("#hi-alert").show();
+        $("#sure").attr("data-id", id).html("修改").attr("id", "change");
+
+    }).on("click", "#cancel", function () {
+        $("#hi-alert").hide();
+        $("#user").val("");
+        $("#pwd").val("");
+        $("#change").removeAttr("data-id").html("确定").attr("id", "sure");
+    }).on("click", "#change", function () {
+        var data = {
+            "name": $("#user").val(),
+            "password": $("#pwd").val(),
+            "type": $("#power").val(),
+            "ID":$("#change").attr("data-id")
+        };
+
+        if ($("#user").val() == "" || $("#pwd").val() == "") {
+            alert("请输入帐号密码！");
+        } else {
+            $.post('server/updateShopper.php', data, function (res) {
+                if (res == 'true') {
+                    alert("修改成功！");
+                    $("#change").removeAttr("data-id").html("确定").attr("id", "sure");
+                    $("#right").load("table/shopper.html");
+                } else {
+                    alert('修改失败！');
+                }
+            });
+        }
+    });
+
+    $('.ui.dropdown').dropdown();
+
+
+</script>

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>海淘推荐</title>
     <link rel="stylesheet" href="plugin/styles.css">
+    <link rel="stylesheet" href="plugin/semantic.css">
     <script src="plugin/jquery-3.1.1.min.js"></script>
 
     <style>
@@ -52,7 +53,7 @@
         }
 
         #head {
-            height: 32px;
+            height: 50px;
             width: 100%;
             background-color: #414141;
         }
@@ -66,7 +67,7 @@
             white-space: nowrap;
         }
 
-        #more{
+        #more {
             margin: auto auto 20px;
             height: 40px;
             width: 80vw;
@@ -75,14 +76,32 @@
             background-color: #666666;
             color: white;
         }
-        #more:hover{
-            cursor:pointer;
+
+        #more:hover {
+            cursor: pointer;
+        }
+
+        #search {
+            float: right;
+            margin: 6px;
+        }
+        #search button{
+            margin: 0 6px;
         }
     </style>
 </head>
 <body>
 
 <div id="head">
+    <div id="search">
+        <div class="ui labeled input" >
+            <div class="ui label">
+               搜索
+            </div>
+            <input type="text" placeholder="关键字" id="key">
+        </div>
+        <button class="ui button" id="sure">确定</button>
+    </div>
 
 </div>
 <div id="main">
@@ -96,6 +115,7 @@
 </html>
 
 <script>
+
 
     var h = document.documentElement.clientHeight;
     var w = document.body.clientWidth;
@@ -111,18 +131,20 @@
             height: 'toggle',
             opacity: 'toggle'
         }, 300);
-    }).on("click","#more",function(){
+    }).on("click", "#more", function () {
         getNews();
     });
 
 
-    var getNews=function(){
-        $.post('http://localhost/getShopping.php', {"start": start, "limit":limit}, function (data) {
+    var getNews = function () {
+        $.post('http://localhost/getShopping.php', {"start": start, "limit": limit,"key":"%"+$("#key").val()+"%"}, function (data) {
             var item = $('#items');
             data = JSON.parse(data);
             data = data.data;
-            if(data.length<limit){
-                $("#more").remove();
+            if (data.length < limit) {
+                $("#more").hide();
+            }else{
+                $("#more").show();
             }
             for (var i = 0; i < data.length; i++) {
                 item.append(createItem2(data[i]));
@@ -131,8 +153,6 @@
         });
     };
     getNews();
-
-
 
     var createItem2 = function (data) {
         var item = document.createElement('div');
@@ -163,12 +183,18 @@
         return item;
     };
 
-
     var countTitle = function (title) {
         if (title.length > 10) {
             title = title.slice(0, 7) + "...";
         }
         return title;
-    }
+    };
+
+    $("#sure").click(function(){
+        $("#items").html("");
+        start = 0;
+        limit = Math.floor(w / 290) * Math.floor(h / 415);
+        getNews();
+    });
 
 </script>

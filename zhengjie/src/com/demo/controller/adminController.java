@@ -5,9 +5,7 @@ import com.jfinal.core.Controller;
 
 import java.util.List;
 
-/**
- * Created by Higuaifan on 2017/3/8.
- */
+
 
 public class adminController extends Controller {
     Admin admin = new Admin();

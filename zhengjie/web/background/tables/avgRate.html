@@ -36,7 +36,7 @@
             var d=data[i];
             $('#rateTbody').append(appendTr(d));
             $('#'+d.user_name).rating({
-                initialRating: d.score,
+                initialRating: Math.floor(d.score),
                 maxRating: 5
             });
         }

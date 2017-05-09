@@ -4,9 +4,6 @@ import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 
-/**
- * Created by 菩萨蛮 on 2017/3/21.
- */
 public class SessionInterceptor implements Interceptor {
     public void intercept(Invocation ai) {
 
@@ -22,7 +19,7 @@ public class SessionInterceptor implements Interceptor {
 
         if ((name!=null&&pwd!=null)||m.equals("login")){
 
-            if(type!=null&&type.equals("student")&&c.equals("/rate")&&m.equals("insert")){
+            if(type!=null&&type.equals("student")){
                 ai.invoke();
             }
 

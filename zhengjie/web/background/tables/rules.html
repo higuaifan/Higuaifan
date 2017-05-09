@@ -76,78 +76,78 @@
             b.innerHTML = '<div class="ui input saveText"><input type="text" value="' + html + '"></div>';
         }
     })
-    .on('click', '.ruleSave', function () {
-    var tr = $(this).parents('tr');
-    var text = tr.find('.saveText');
-    var arr = [];
-    var id = tr.children().eq(0).html();
-    $(this).html('编辑').addClass('ruleEdit').removeClass('ruleSave');
-    for (var i = 0; i < text.length; i++) {
-        var b = text[i];
-        var p = $(b).parent();
-        var val = $(b).children().eq(0).val();
-        arr.push(val);
-        p.html(val);
-    }
-
-    var select = $(tr).find(".selection");
-    var td = select.find('input').parents('td');
-
-    var data = {
-        'id': id - 0,
-        'rule': arr[0]
-    };
-
-    console.log(data);
-
-    $.post("/rules/update", data, function (res) {
-        if (res) {
-            swal('更新成功');
-        } else {
-            swal('更新失败');
-        }
-    });
-
-})
-    .on('click', '.ruleInsert', function () {
-    var input = $(this).parents('tr').find('input');
-    data = {'rule': input.val()};
-    $.ajax({
-        type: 'post',
-        url: '/rules/insert',
-        data: data,
-        async: false,
-        success: function (res) {
-            if (res) {
-                swal('添加成功');
-            } else {
-                swal('添加失败');
+        .on('click', '.ruleSave', function () {
+            var tr = $(this).parents('tr');
+            var text = tr.find('.saveText');
+            var arr = [];
+            var id = tr.children().eq(0).html();
+            $(this).html('编辑').addClass('ruleEdit').removeClass('ruleSave');
+            for (var i = 0; i < text.length; i++) {
+                var b = text[i];
+                var p = $(b).parent();
+                var val = $(b).children().eq(0).val();
+                arr.push(val);
+                p.html(val);
             }
-        }
-    });
-})
-    .on('click', '.ruleCancel', function () {
-    $(this).parents('.createTr').remove();
-})
-    .on('click', '.ruleDel', function () {
-    var tr = $(this).parents('tr');
-    var id = tr.children().eq(0).html();
-    data = {'id': id};
-    $.ajax({
-        type: 'post',
-        url: '/rules/delete',
-        data: data,
-        async: false,
-        success: function (res) {
-            if (res) {
-                swal('删除成功');
-            } else {
-                swal('删除失败');
-            }
-        },
-        error: function () {
-            swal('删除失败');
-        }
-    });
-});
+
+            var select = $(tr).find(".selection");
+            var td = select.find('input').parents('td');
+
+            var data = {
+                'id': id - 0,
+                'rule': arr[0]
+            };
+
+            console.log(data);
+
+            $.post("/rules/update", data, function (res) {
+                if (res) {
+                    swal('更新成功');
+                } else {
+                    swal('更新失败');
+                }
+            });
+
+        })
+        .on('click', '.ruleInsert', function () {
+            var input = $(this).parents('tr').find('input');
+            data = {'rule': input.val()};
+            $.ajax({
+                type: 'post',
+                url: '/rules/insert',
+                data: data,
+                async: false,
+                success: function (res) {
+                    if (res) {
+                        swal('添加成功');
+                    } else {
+                        swal('添加失败');
+                    }
+                }
+            });
+        })
+        .on('click', '.ruleCancel', function () {
+            $(this).parents('.createTr').remove();
+        })
+        .on('click', '.ruleDel', function () {
+            var tr = $(this).parents('tr');
+            var id = tr.children().eq(0).html();
+            data = {'id': id};
+            $.ajax({
+                type: 'post',
+                url: '/rules/delete',
+                data: data,
+                async: false,
+                success: function (res) {
+                    if (res) {
+                        swal('删除成功');
+                    } else {
+                        swal('删除失败');
+                    }
+                },
+                error: function () {
+                    swal('删除失败');
+                }
+            });
+        });
 </script>

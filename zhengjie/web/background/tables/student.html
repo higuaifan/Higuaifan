@@ -124,7 +124,7 @@
             '           <div class="ui buttons">' +
             '               <button class="ui positive button active edit">编辑</button>' +
             '               <div class="or"></div>' +
-            '               <button class="ui button">删除</button>' +
+            '               <button class="ui button del">删除</button>' +
             '           </div>' +
             '        </td>' +
             '    </tr>'
@@ -205,7 +205,28 @@
                 }
             });
 
-        });
+        })
+        .on('click','.del',function(){
+            var tr = $(this).parents('tr');
+            var id = tr.children().eq(0).html();
+            data = {'id': id};
+            $.ajax({
+                type: 'post',
+                url: '/student/delete',
+                data: data,
+                async: false,
+                success: function (res) {
+                    if (res) {
+                        swal('删除成功');
+                    } else {
+                        swal('删除失败');
+                    }
+                },
+                error: function () {
+                    swal('删除失败');
+                }
+            });
+        }) ;
 
 
 </script>

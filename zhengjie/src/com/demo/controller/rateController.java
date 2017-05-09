@@ -3,11 +3,7 @@ package com.demo.controller;
 import com.demo.common.model.Rate;
 import com.jfinal.core.Controller;
 
-/**
- * Created by Higuaifan on 2017/3/15.
- * 大道五十,代码四九,bug遁一.
- * 能不能跑,全部看命.
- */
+
 public class rateController extends Controller {
     Rate rate = new Rate();
 

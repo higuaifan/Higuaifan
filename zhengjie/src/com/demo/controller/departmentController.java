@@ -25,11 +25,11 @@ public class departmentController extends Controller {
     public void update() {
         int id = getParaToInt("id");
         String departments = getPara("department");
-        renderJson(department.updateDepartment(id,departments));
+        renderJson(department.updateDepartment(id, departments));
     }
 
-    public void delete(){
-        int id=getParaToInt("id");
+    public void delete() {
+        int id = getParaToInt("id");
         renderJson(department.deleteDepartment(id));
     }
 }

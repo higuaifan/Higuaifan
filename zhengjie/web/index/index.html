@@ -18,62 +18,82 @@
             width: 100vw;
         }
 
-        #total{
+        #total {
             margin: auto;
         }
 
-        #main,#admin {
+        #main, #admin {
             width: 250px;
         }
 
-        #login,#adminLogin {
+        #login, #adminLogin {
             margin: 10px auto;
         }
 
-        #admin{
+        #admin {
             display: none;
         }
 
-        #title{
-            margin: 20px;
+        #title {
+            padding: 20px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            background-color: #c0c0c0;
         }
 
     </style>
 
 </head>
 <body>
+<div>
+    <!--<h1>用户管理系统</h1>-->
+</div>
 <div id="total">
     <div id="title">
-        <button class="ui button" id="userB">用户</button>
+        <button class="ui button primary" id="userB">用户</button>
         <button class="ui button" id="adminB">管理员</button>
     </div>
     <div id="show">
 
         <div id="main">
-            <div class="inputLine ui input">
-                <span >账号：</span>
-                <input type="text" id="user">
+
+            <div class="ui labeled input">
+                <div class="ui label">
+                    账号
+                </div>
+                <input type="text" id="user" placeholder="请在此输入">
             </div>
-            <div class="inputLine ui input">
-                <span>密码：</span>
-                <input type="password" id="pwd">
+
+            <div class="ui labeled input">
+                <div class="ui label">
+                    密码
+                </div>
+                <input type="text" id="pwd" placeholder="请在此输入">
             </div>
+
             <div class="inputLine">
-                <button class="ui button" id="login">登录</button>
+                <button class="ui button primary" id="login">登录</button>
             </div>
         </div>
 
         <div id="admin">
-            <div class="inputLine ui input">
-                <span>账号：</span>
-                <input type="text" id="adminUser">
+
+            <div class="ui labeled input">
+                <div class="ui label">
+                    账号
+                </div>
+                <input type="text" id="adminUser" placeholder="请在此输入">
             </div>
-            <div class="inputLine ui input">
-                <span>密码：</span>
-                <input type="password" id="adminPwd">
+
+            <div class="ui labeled input">
+                <div class="ui label">
+                    密码
+                </div>
+                <input type="text" id="adminPwd" placeholder="请在此输入">
             </div>
+
             <div class="inputLine">
-                <button class="ui button" id="adminLogin">登录</button>
+                <button class="ui button primary" id="adminLogin">登录</button>
             </div>
         </div>
     </div>
@@ -88,11 +108,11 @@
 <script src="../ui/SweetAlert/sweetalert.min.js"></script>
 
 <script>
-    $("#login").click(function(){
+    $("#login").click(function () {
         var data = {'user': $("#user").val(), 'password': $("#pwd").val()};
 
         $.ajax({
-            type:'post',
+            type: 'post',
             url: "/student/login",
             data: data,
             success: function (res) {
@@ -102,17 +122,17 @@
                     swal('请输入正确的帐号密码！');
                 }
             },
-            error:function(e){
+            error: function (e) {
                 console.log(e);
             }
         });
     });
 
-    $("#adminLogin").click(function(){
+    $("#adminLogin").click(function () {
         var data = {'user': $("#adminUser").val(), 'password': $("#adminPwd").val()};
 
         $.ajax({
-            type:'post',
+            type: 'post',
             url: "/admin/login",
             data: data,
             success: function (res) {
@@ -122,18 +142,22 @@
                     swal('请输入正确的帐号密码！');
                 }
             },
-            error:function(e){
+            error: function (e) {
                 console.log(e);
             }
         });
     });
 
-    $("#userB").click(function(){
+    $("#userB").click(function () {
+        $("#userB").addClass("primary");
+        $("#adminB").removeClass("primary");
         $("#main").show();
         $("#admin").hide();
     });
 
-    $("#adminB").click(function(){
+    $("#adminB").click(function () {
+        $("#userB").removeClass("primary");
+        $("#adminB").addClass("primary");
         $("#main").hide();
         $("#admin").show();
     });

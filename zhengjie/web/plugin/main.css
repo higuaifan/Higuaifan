@@ -96,3 +96,13 @@ a {
     cursor:pointer;
     color:red;
 }
+
+#total{
+    border:2px solid #c0c0c0;
+    border-radius: 10px;
+}
+
+
+#main>div,#admin>div{
+    margin: 5px auto;
+}

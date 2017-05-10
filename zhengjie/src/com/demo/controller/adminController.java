@@ -31,4 +31,10 @@ public class adminController extends Controller {
             renderJson("{\"data\":\"error\"}");
         }
     }
+    public void logout(){
+        setSessionAttr("user", "");
+        setSessionAttr("pwd", "");
+        setSessionAttr("type", "");
+        renderJson("{\"data\":\"success\"}");
+    }
 }

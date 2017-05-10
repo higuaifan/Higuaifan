@@ -62,5 +62,11 @@ public class studentController extends Controller {
         }
 
     }
+    public void logout(){
+        setSessionAttr("user", "");
+        setSessionAttr("pwd", "");
+        setSessionAttr("type", "");
+        renderJson("{\"data\":\"success\"}");
+    }
 }
 

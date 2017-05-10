@@ -46,11 +46,31 @@
     <splitter split-orientation="horizontal" split-proportion="0.48126337">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="rules.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="rules.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/web/background/tables/rules.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1163">
-                  <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="150" selection-end-column="15" />
+                <state relative-caret-position="893">
+                  <caret line="112" column="60" lean-forward="true" selection-start-line="112" selection-start-column="60" selection-end-line="112" selection-end-column="60" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="studentController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/demo/controller/studentController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="405">
+                  <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="main.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/web/background/main.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="315">
+                  <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
                   <folding />
                 </state>
               </provider>
@@ -63,18 +83,18 @@
           <file leaf-file-name="adminController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/demo/controller/adminController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+                <state relative-caret-position="495">
+                  <caret line="38" column="5" lean-forward="false" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="student.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/web/background/tables/student.html">
+          <file leaf-file-name="user.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/web/background/user.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1328">
-                  <caret line="214" column="30" lean-forward="false" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
+                <state relative-caret-position="750">
+                  <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="52" selection-end-column="9" />
                   <folding />
                 </state>
               </provider>
@@ -121,6 +141,8 @@
       <find>login</find>
       <find>show</find>
       <find>previousSibling</find>
+      <find>logout</find>
+      <find>setSessionAttr(&quot;user&quot;, user);             setSessionAttr(&quot;pwd&quot;, pwd);</find>
     </findStrings>
     <replaceStrings>
       <replace>score</replace>
@@ -155,7 +177,6 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0a38a8b7-e42e-45b9-9abe-b07d785042ed/console.sql" />
         <option value="$PROJECT_DIR$/src/com/demo/common/model/Rate.java" />
         <option value="$PROJECT_DIR$/web/background/tables/rating.html" />
-        <option value="$PROJECT_DIR$/src/com/demo/controller/studentController.java" />
         <option value="$PROJECT_DIR$/src/com/demo/common/model/Admin.java" />
         <option value="$PROJECT_DIR$/web/index/userLogin.html" />
         <option value="$PROJECT_DIR$/src/com/demo/controller/rateController.java" />
@@ -163,13 +184,14 @@
         <option value="$PROJECT_DIR$/web/plugin/main.css" />
         <option value="$PROJECT_DIR$/src/com/demo/controller/departmentController.java" />
         <option value="$PROJECT_DIR$/web/index/index.html" />
-        <option value="$PROJECT_DIR$/web/background/user.html" />
         <option value="$PROJECT_DIR$/src/com/demo/controller/SessionInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/com/demo/controller/adminController.java" />
-        <option value="$PROJECT_DIR$/web/background/main.html" />
         <option value="$PROJECT_DIR$/web/background/tables/avgRate.html" />
         <option value="$PROJECT_DIR$/web/background/tables/rules.html" />
         <option value="$PROJECT_DIR$/web/background/tables/student.html" />
+        <option value="$PROJECT_DIR$/src/com/demo/controller/studentController.java" />
+        <option value="$PROJECT_DIR$/src/com/demo/controller/adminController.java" />
+        <option value="$PROJECT_DIR$/web/background/user.html" />
+        <option value="$PROJECT_DIR$/web/background/main.html" />
       </list>
     </option>
   </component>
@@ -1002,12 +1024,12 @@
       <workItem from="1490414840144" duration="674000" />
       <workItem from="1490774710159" duration="1307000" />
       <workItem from="1494293206730" duration="3196000" />
-      <workItem from="1494329857344" duration="4112000" />
+      <workItem from="1494329857344" duration="5958000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83346000" />
+    <option name="totallyTimeSpent" value="85192000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1019,8 +1041,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="0" width="2361" height="2130" extended-state="1" />
-    <editor active="true" />
+    <frame x="54" y="0" width="2361" height="2130" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1034,7 +1056,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1961962" sideWeight="0.49288726" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1961962" sideWeight="0.49288726" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07497517" sideWeight="0.49525815" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1292,26 +1314,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/background/user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="52" column="44" lean-forward="false" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo/common/model/Student.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="28" column="16" lean-forward="false" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo/controller/adminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1326,14 +1332,6 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/background/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="55" column="50" lean-forward="true" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1414,24 +1412,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/background/tables/rules.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1163">
-          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="150" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo/controller/studentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="50" column="32" lean-forward="false" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+        <state relative-caret-position="893">
+          <caret line="112" column="60" lean-forward="true" selection-start-line="112" selection-start-column="60" selection-end-line="112" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/background/tables/student.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1328">
-          <caret line="214" column="30" lean-forward="false" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
+        <state relative-caret-position="1193">
+          <caret line="205" column="15" lean-forward="true" selection-start-line="199" selection-start-column="12" selection-end-line="205" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo/controller/adminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="38" column="5" lean-forward="false" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo/controller/studentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/background/user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="52" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/background/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
           <folding />
         </state>
       </provider>

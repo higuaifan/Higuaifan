@@ -1,0 +1,148 @@
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, "宋体", serif;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+#main {
+    width: 966px;
+    margin: auto;
+}
+
+#head {
+    height: 75px;
+}
+
+#head > div {
+    display: inline-block;
+}
+
+#logo > img {
+    width: 60px;
+}
+
+#week {
+    float: right;
+    padding: 50px 20px 0 0;
+}
+
+#tags {
+    background: linear-gradient(#293501, #4c5c01);
+    height: 30px;
+}
+
+#tags > div {
+    display: inline-block;
+    color: white;
+    border-right: 1px solid #969696;
+    margin: 2px 0;
+    line-height: 25px;
+    padding: 0 10px;
+}
+
+#tags > div:hover {
+    cursor: pointer;
+    color: #969696;
+}
+
+#images {
+    margin: 30px 0;
+}
+
+#images > img {
+    width: 966px;
+    height: 275px;
+}
+
+.title {
+    font-size: 14px;
+    color: #203689;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+#message-title-detail {
+    width: 286px;
+}
+
+#message {
+    display: flex;
+}
+
+.messages {
+    display: flex;
+    margin: 10px 0;
+}
+
+.messages > img {
+    width: 82px;
+    height: 61px;
+    margin: auto 0;
+}
+
+.messages > div {
+    display: inline-block;
+    padding: 5px;
+}
+
+#left, #mid, #right {
+    width: 33%;
+    display: inline-block;
+    padding: 0 15px;
+}
+
+#left {
+    border-right: 1px solid #969696;
+}
+
+#mid {
+    border-right: 1px solid #969696;
+}
+
+.message-detail {
+    width: 180px;
+    margin: 10px 0;
+}
+
+.hide {
+    /*display: none;*/
+}
+
+#mid-image {
+    height: 124px;
+    margin: 0 0 5px 0;
+}
+
+#mid-image > img {
+    position: absolute;
+    height: 124px;
+}
+
+
+
+.new > div {
+    display: inline-block;
+}
+
+.new-title > a {
+    text-decoration: none;
+    color: #203689;
+}
+
+#foot {
+    margin: 30px 0 0 0;
+    height: 44px;
+    background-color: #eeeeee;
+}
+
+.float-right {
+    float: right;
+}
+
+#foot > span {
+    display: inline-block;
+    margin: 15px 5px;
+    color: #969696;
+}

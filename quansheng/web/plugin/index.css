@@ -120,8 +120,6 @@ body {
     height: 124px;
 }
 
-
-
 .new > div {
     display: inline-block;
 }
@@ -145,4 +143,56 @@ body {
     display: inline-block;
     margin: 15px 5px;
     color: #969696;
+}
+
+#new-top {
+    height: 40px;
+    background-color: #eeeeee;
+    border: 1px solid #969696;
+}
+
+#new-main {
+    display: flex;
+}
+
+#new-main-left {
+    width: 205px;
+    background-color: #eeeeee;
+}
+
+#new-main-right {
+    margin: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    width: 673px;
+}
+
+.left-tag {
+    margin: 10px;
+    color: #203689;
+    border: 1px solid #969696;
+    height: 25px;
+    line-height: 25px;
+    padding: 5px;
+}
+
+#new-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#new-time {
+    margin: 10px;
+    text-align: center;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+#new-message {
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: white
 }

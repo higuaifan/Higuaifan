@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全顺集团</title>
+    <link rel="stylesheet" href="/web/plugin/normalize.css">
+    <link rel="stylesheet" href="/web/plugin/index.css">
+</head>
+<body>
+<div id="main">
+    <div id="head">
+        <div id="logo">
+            <img src="/web/image/logo.jpg" alt="">
+        </div>
+        <div id="week">2017年5月10日 星期三</div>
+    </div>
+    <div id="tags">
+        <div class="tag"><a href="/web/index.html">首页</a></div>
+        <div class="tag">集团简介</div>
+        <div class="tag">集团简介</div>
+        <div class="tag">集团简介</div>
+        <div class="tag">集团简介</div>
+    </div>
+    <div id="images">
+        <img style="width: auto;height: auto;" src="/web/image/news.jpg" alt="">
+    </div>
+    <div id="new-body">
+
+        <div id="new-top"></div>
+        <div id="new-main">
+            <div id="new-main-left">
+                <div class="left-tag">新闻中心</div>
+            </div>
+            <div id="new-main-right">
+                <div id="new-title"></div>
+                <div id="new-time"></div>
+                <div id="new-message"></div>
+            </div>
+        </div>
+
+    </div>
+    <div id="foot">
+        <span>联系方式</span>
+        <span>版权申明</span>
+        <span class="float-right">版权所有</span>
+        <span class="float-right">全顺集团</span>
+        <span class="float-right">网站备份号</span>
+    </div>
+
+</div>
+</body>
+</html>
+
+<script src="plugin/jquery-3.1.1.min.js"></script>
+<script>
+
+
+    $.post("/php/getNewsById.php",{id:getQueryString("id")}, function (res) {
+        var data = res.data[0];
+        console.log(getQueryString("id"));
+        $("#new-title").html(data.title);
+        $("#new-time").html(data.create_time);
+        $("#new-message").html(data.message);
+    });
+
+
+
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+</script>

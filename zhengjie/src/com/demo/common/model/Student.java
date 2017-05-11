@@ -14,6 +14,10 @@ public class Student extends BaseStudent<Student> {
 		return Student.dao.find("select student.id,user_name,real_name,password,phone,student.department as departmentId,department.department,pic from student,department where department.id=student.department");
 	}
 
+	public List getStudentByName(String name) {
+		return Student.dao.find("select student.id,user_name,real_name,password,phone,student.department as departmentId,department.department,pic from student,department where department.id=student.department and real_name like ?","%"+name+"%");
+	}
+
 	public boolean insertStudent(String user_name, String real_name, String password, String phone, int department,String pic) {
 		return new Student().set("user_name", user_name).set("real_name", real_name).set("password", password).set("phone", phone).set("department", department).set("pic",pic).save();
 	}
@@ -30,5 +34,8 @@ public class Student extends BaseStudent<Student> {
 		return Student.dao.find("select * from student where user_name =? and password = ?",user,password);
 	}
 
+	public List getInfo(int id){
+		return Student.dao.find("select real_name,phone,department.department from student,department where student.id=? and student.department=department.id",id);
+	}
 
 }

@@ -1,4 +1,8 @@
 <div class="student">
+    <div class="ui action input">
+        <input type="text" id="user_name" placeholder="搜索用户">
+        <button class="ui button" id="search">搜索</button>
+    </div>
     <table class="ui celled striped table" id="studentTable">
         <thead>
         <tr>
@@ -50,6 +54,15 @@
     };
 
     getDepartment();
+    
+    $("#search").click(function () {
+        $.post("/student/search",{"user_name":$("#user_name").val()}, function (data) {
+            $("#studentTbody").html("");
+            for (var d in data) {
+                $("#studentTbody").append(userTable(data[d]));
+            }
+        });
+    });
 
     $("#add").click(function () {
         if ($(".createTr").length < 1) {
@@ -131,6 +144,7 @@
     };
 
     $.get("/student/index", function (data) {
+        $("#studentTbody").html("");
         for (var d in data) {
             $("#studentTbody").append(userTable(data[d]));
         }

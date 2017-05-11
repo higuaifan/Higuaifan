@@ -18,6 +18,12 @@ public class studentController extends Controller {
         renderJson(student.getStudent());
     }
 
+    public void search(){
+        String user_name = getPara("user_name");
+        renderJson(student.getStudentByName(user_name));
+    }
+
+    public void getInfo(){renderJson(student.getInfo(getSessionAttr("id")));}
 
     public void insert() {
         String user_name = getPara("user_name");

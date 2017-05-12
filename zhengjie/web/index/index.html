@@ -15,11 +15,12 @@
             flex-direction: column;
             text-align: center;
             height: 100vh;
+            justify-content: center;
             width: 100vw;
         }
 
         #total {
-            margin: auto;
+            margin:0 auto;
         }
 
         #main, #admin {
@@ -41,14 +42,21 @@
             background-color: #c0c0c0;
         }
 
+        #head {
+            margin: 50px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
     </style>
 
 </head>
 <body>
-<div>
-    <!--<h1>用户管理系统</h1>-->
+<div id="head">
+    <span>学生会工作绩效考核系统</span>
 </div>
 <div id="total">
+
     <div id="title">
         <button class="ui button primary" id="userB">用户</button>
         <button class="ui button" id="adminB">管理员</button>

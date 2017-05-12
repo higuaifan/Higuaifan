@@ -58,12 +58,14 @@
 
 <div id="left">
     <div class="tab" data-html="rating">开始评分</div>
+    <div class="tab" data-html="avgRate">排名表</div>
+
 
     <div id="button-div"><button  class="ui button" id="logout" >登出</button></div>
 </div>
 
 <div id="right">
-
+    <div>公告：</div>
 </div>
 
 </body>
@@ -85,7 +87,7 @@
     $.get("/student/getInfo", function (res) {
         console.log(res);
         var data=res[0];
-        $("#right").html("<div>" +
+        $("#right").append("<div>" +
             "<div>欢迎你"+data.real_name+"</div>" +
             "<div>联系电话："+data.phone+"</div>" +
             "<div>所属部门:"+data.department+"</div>" +

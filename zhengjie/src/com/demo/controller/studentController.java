@@ -31,8 +31,7 @@ public class studentController extends Controller {
         String password = getPara("password");
         String phone = getPara("phone");
         int department = getParaToInt("department");
-        String pic = getPara("pic");
-        renderJson(student.insertStudent(user_name, real_name, password, phone, department, pic));
+        renderJson(student.insertStudent(user_name, real_name, password, phone, department));
     }
 
     public void update() {

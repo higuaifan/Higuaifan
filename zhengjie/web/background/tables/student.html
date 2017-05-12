@@ -54,9 +54,9 @@
     };
 
     getDepartment();
-    
+
     $("#search").click(function () {
-        $.post("/student/search",{"user_name":$("#user_name").val()}, function (data) {
+        $.post("/student/search", {"user_name": $("#user_name").val()}, function (data) {
             $("#studentTbody").html("");
             for (var d in data) {
                 $("#studentTbody").append(userTable(data[d]));
@@ -101,7 +101,7 @@
             '    </td>' +
             '    <td>' +
             '        <div class="ui buttons">' +
-            '            <button class="ui positive button active">确定</button>' +
+            '            <button class="ui positive button active insert">确定</button>' +
             '            <div class="or"></div>' +
             '            <button class="ui button cancelButton">取消</button>' +
             '        </div>' +
@@ -117,7 +117,7 @@
             '        <td>' + data.id + '</td>' +
             '        <td>' +
             '           <h4 class="ui image header">' +
-            '               <img src="' + data.pic + '" class="ui mini rounded image">' +
+            '               <img style="display: none" src="' + data.pic + '" class="ui mini rounded image">' +
             '               <div class="content">' +
             '                   <div class="editText">' + data.real_name + '</div>' +
             '                   <div class="sub header editText">' + data.user_name + '</div>' +
@@ -154,29 +154,64 @@
 
     b.on('click', '.cancelButton', function () {
         $(this).parents('tr')[0].remove();
-    })
-        .on('click', '.edit', function () {
-            var tr = $(this).parents('tr');
-            var text = tr.find('.editText');
-            $(this).html('保存').addClass('save').removeClass('edit');
+    }).on('click', '.edit', function () {
+        var tr = $(this).parents('tr');
+        var text = tr.find('.editText');
+        $(this).html('保存').addClass('save').removeClass('edit');
 
-            for (var i = 0; i < text.length; i++) {
-                var b = text[i];
-                var html = b.innerHTML.replace(/ /g, '');
-                b.innerHTML = '<div class="ui input saveText"><input type="text" value="' + html + '"></div>';
+        for (var i = 0; i < text.length; i++) {
+            var b = text[i];
+            var html = b.innerHTML.replace(/ /g, '');
+            b.innerHTML = '<div class="ui input saveText"><input type="text" value="' + html + '"></div>';
+        }
+
+        var list = $(tr).find('.listText')[0];
+        var id = $(list)[0].getAttribute('data-id');
+        html = $(list).html();
+        $(list).html(makeDepartmentList(html, id));
+        $('.ui.dropdown').dropdown({
+            metadata: {
+                defaultText: html,
+                defaultValue: id
             }
+        });
+    }).on('click', '.insert', function () {
+        var tr = $(this).parents('tr');
+        var text = tr.find('input');
+        var arr = [];
+        for (var i = 0; i < text.length; i++) {
+            var b = text[i];
+            var val = $(b).val();
+            arr.push(val);
+        }
 
-            var list = $(tr).find('.listText')[0];
-            var id = $(list)[0].getAttribute('data-id');
-            html = $(list).html();
-            $(list).html(makeDepartmentList(html, id));
-            $('.ui.dropdown').dropdown({
-                metadata: {
-                    defaultText: html,
-                    defaultValue: id
+        var select = $(tr).find(".selection");
+        var autoId = select.parent()[0].getAttribute('data-id');
+        var departmentId = select.find('input').val() || autoId;
+
+
+        var data = {
+            'real_name': arr[0],
+            'user_name': arr[1],
+            'password': arr[2],
+            'phone': arr[3],
+            'department': departmentId
+        };
+        $.ajax({
+            type: 'post',
+            url: '/student/insert',
+            data: data,
+            async: false,
+            success: function (res) {
+                if (res) {
+                    swal('添加成功');
+                } else {
+                    swal('添加失败');
                 }
-            });
-        })
+            }
+        });
+    })
+
         .on('click', '.save', function () {
             var tr = $(this).parents('tr');
             var img = tr.find('img')[0].getAttribute('src');
@@ -220,7 +255,7 @@
             });
 
         })
-        .on('click','.del',function(){
+        .on('click', '.del', function () {
             var tr = $(this).parents('tr');
             var id = tr.children().eq(0).html();
             data = {'id': id};
@@ -240,7 +275,7 @@
                     swal('删除失败');
                 }
             });
-        }) ;
+        });
 
 
 </script>

@@ -30,14 +30,15 @@
         <div id="new-top"></div>
         <div id="new-main">
             <div id="new-main-left">
-                <div class="left-tag">新闻中心</div>
-                <div class="left-tag-two" id="321">集团新闻</div>
-                <div class="left-tag-two" id="123">行业资讯</div>
+                <div class="left-tag">企业产品</div>
+                <div class="left-tag-two" id="product_ornament">配饰系列</div>
+                <div class="left-tag-two" id="product_ornament">纱线系列</div>
+                <div class="left-tag-two" id="product_ornament">面料系列</div>
+                <div class="left-tag-two" id="product_ornament">童装系列</div>
+
             </div>
             <div id="new-main-right">
-                <div id="new-title"></div>
-                <div id="new-time"></div>
-                <div id="new-message"></div>
+
             </div>
         </div>
 
@@ -58,6 +59,13 @@
 </html>
 
 <script src="plugin/jquery-3.1.1.min.js"></script>
+
+
 <script>
+    $("#new-main-right").load("/web/htmls/product_ornament.html");
+    $("#product_ornament").click(function(){
+        $("#new-main-right").load("/web/htmls/product_ornament.html");
+    });
+
 
 </script>

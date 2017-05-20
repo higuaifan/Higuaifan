@@ -30,12 +30,16 @@
         <div id="new-top"></div>
         <div id="new-main">
             <div id="new-main-left">
-                <div class="left-tag">新闻中心</div>
+                <div class="left-tag">集团简介</div>
+                <div class="left-tag-two" id="company_introduce">集团简介</div>
+                <div class="left-tag-two" id="company_cultural">企业文化</div>
+                <div class="left-tag-two" id="company_estate">集团产业</div>
+                <div class="left-tag-two" id="company_public">公益事业</div>
+                <div class="left-tag-two" id="company_honour">企业荣誉</div>
+
             </div>
             <div id="new-main-right">
-                <div id="new-title"></div>
-                <div id="new-time"></div>
-                <div id="new-message"></div>
+
             </div>
         </div>
 
@@ -56,3 +60,27 @@
 </html>
 
 <script src="plugin/jquery-3.1.1.min.js"></script>
+
+
+<script>
+    $("#new-main-right").load("/web/htmls/company_introduce.html");
+    $("#company_introduce").click(function(){
+        $("#new-main-right").load("/web/htmls/company_introduce.html");
+    });
+
+    $("#company_cultural").click(function(){
+        $("#new-main-right").load("/web/htmls/company_cultural.html");
+    });
+
+    $("#company_estate").click(function(){
+        $("#new-main-right").load("/web/htmls/company_estate.html");
+    });
+
+    $("#company_public").click(function(){
+        $("#new-main-right").load("/web/htmls/company_public.html");
+    });
+
+    $("#company_honour").click(function(){
+        $("#new-main-right").load("/web/htmls/company_honour.html");
+    });
+</script>

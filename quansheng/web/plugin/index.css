@@ -147,8 +147,7 @@ body {
 
 #new-top {
     height: 40px;
-    background-color: #eeeeee;
-    border: 1px solid #969696;
+    background: linear-gradient(#ffffff, #eeeeee);
 }
 
 #new-main {
@@ -169,11 +168,29 @@ body {
 
 .left-tag {
     margin: 10px;
-    color: #203689;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    background: linear-gradient(#004b7d, #0064aa);
     border: 1px solid #969696;
     height: 25px;
     line-height: 25px;
-    padding: 5px;
+    padding: 5px 5px 5px 10px;
+}
+
+.left-tag-two {
+    margin: 10px;
+    color: #203689;
+    background: #f8f8f8;
+    border: 1px solid #969696;
+    height: 20px;
+    line-height: 20px;
+    padding: 5px 5px 5px 10px;
+}
+
+.left-tag-two:hover {
+    cursor: pointer;
+    color: #892020;
 }
 
 #new-title {
@@ -205,4 +222,34 @@ a {
 #right .messages img {
     width: 50px;
     height: 50px;
+}
+
+#i-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #203689;
+}
+
+#i-images > img {
+    height: 190px;
+    width: 330px;
+    display: inline-block;
+}
+
+.product {
+    display: inline-block;
+}
+
+.product-a {
+    color: #203689;
+}
+
+table {
+    width:100%;
+}
+
+tr td {
+    background: #e9f5fc;
+    line-height: 32px;
+    text-align: center;
 }

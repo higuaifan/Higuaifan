@@ -171,7 +171,7 @@ body {
     color: white;
     font-size: 14px;
     font-weight: bold;
-    background: linear-gradient(#004b7d, #0064aa);
+    background:linear-gradient(#293501, #4c5c01);
     border: 1px solid #969696;
     height: 25px;
     line-height: 25px;
@@ -228,6 +228,7 @@ a {
     font-size: 14px;
     font-weight: bold;
     color: #203689;
+    padding: 10px;
 }
 
 #i-images > img {
@@ -238,10 +239,18 @@ a {
 
 .product {
     display: inline-block;
+    margin: 0 14px 18px;
+}
+.product img{
+    width: 190px;
+    height: 150px;
 }
 
 .product-a {
     color: #203689;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
 }
 
 table {

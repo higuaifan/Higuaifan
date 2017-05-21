@@ -12,7 +12,7 @@
         <div id="logo">
             <img src="/web/image/logo.jpg" alt="">
         </div>
-        <div id="week">2017年5月10日 星期三</div>
+        <div id="week"></div>
     </div>
     <div id="tags">
         <div class="tag"><a href="/web/index.html">首页</a></div>
@@ -31,8 +31,8 @@
         <div id="new-main">
             <div id="new-main-left">
                 <div class="left-tag">新闻中心</div>
-                <div class="left-tag-two" id="321">集团新闻</div>
-                <div class="left-tag-two" id="123">行业资讯</div>
+                <div class="left-tag-two" id="news_company">集团新闻</div>
+                <div class="left-tag-two" id="news_industry">行业资讯</div>
             </div>
             <div id="new-main-right">
                 <div id="new-title"></div>
@@ -60,4 +60,48 @@
 <script src="plugin/jquery-3.1.1.min.js"></script>
 <script>
 
+    Date.prototype.format = function(format){
+        var o = {
+            "M+" : this.getMonth()+1, //month
+            "d+" : this.getDate(), //day
+            "h+" : this.getHours(), //hour
+            "m+" : this.getMinutes(), //minute
+            "s+" : this.getSeconds(), //second
+            "q+" : Math.floor((this.getMonth()+3)/3), //quarter
+            "S" : this.getMilliseconds() //millisecond
+        };
+
+        if(/(y+)/.test(format)) {
+            format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+        }
+
+        for(var k in o) {
+            if(new RegExp("("+ k +")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+            }
+        }
+        return format;
+    };
+    $("#week").html(new Date().format("yyyy年MM月dd日"));
+
+
+    var createNews = function (data) {
+        var time = data.create_time.split(" ")[0];
+        var str = '<div class="new">' +
+            '<div class="new-title">' +
+            '<a href="/web/news.html?id=' + data.id + '">' + data.title + '</a>' +
+            '</div>' +
+            '<div class="new-time" style="float: right">' + time + '</div>' +
+            '</div>';
+
+        return str;
+    };
+    $("#new-main-right").load("/web/htmls/news_company.html");
+
+    $("#news_company").click(function(){
+        $("#new-main-right").load("/web/htmls/news_company.html");
+    });
+    $("#news_industry").click(function(){
+        $("#new-main-right").load("/web/htmls/news_industry.html");
+    });
 </script>

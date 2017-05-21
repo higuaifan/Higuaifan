@@ -32,20 +32,19 @@
             <div id="new-main-left">
                 <div class="left-tag">企业产品</div>
                 <div class="left-tag-two" id="product_ornament">配饰系列</div>
-                <div class="left-tag-two" id="product_ornament">纱线系列</div>
-                <div class="left-tag-two" id="product_ornament">面料系列</div>
-                <div class="left-tag-two" id="product_ornament">童装系列</div>
+                <div class="left-tag-two" id="product_yarn">纱线系列</div>
+                <div class="left-tag-two" id="product_fabric">面料系列</div>
+                <div class="left-tag-two" id="product_garments">童装系列</div>
 
             </div>
             <div id="new-main-right">
 
             </div>
         </div>
-
     </div>
     <div id="foot">
         <span>联系方式</span>
-        <span><a href="www.yalekids.cn">童装定制官网</a></span>
+        <span><a href="http://www.yalekids.cn">童装定制官网</a></span>
         <span><a href="https://shop124524846.taobao.com">童装商城</a></span>
         <span><a href="https://shop68290887.taobao.com/">淘宝工厂店</a></span>
         <span><a href="https://weidian.com/?userid=976200154&wfr=c">yalekids微店</a></span>
@@ -62,10 +61,40 @@
 
 
 <script>
+    Date.prototype.format = function(format){
+        var o = {
+            "M+" : this.getMonth()+1, //month
+            "d+" : this.getDate(), //day
+            "h+" : this.getHours(), //hour
+            "m+" : this.getMinutes(), //minute
+            "s+" : this.getSeconds(), //second
+            "q+" : Math.floor((this.getMonth()+3)/3), //quarter
+            "S" : this.getMilliseconds() //millisecond
+        };
+
+        if(/(y+)/.test(format)) {
+            format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+        }
+
+        for(var k in o) {
+            if(new RegExp("("+ k +")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+            }
+        }
+        return format;
+    };
+    $("#week").html(new Date().format("yyyy年MM月dd日"));
     $("#new-main-right").load("/web/htmls/product_ornament.html");
     $("#product_ornament").click(function(){
         $("#new-main-right").load("/web/htmls/product_ornament.html");
     });
-
-
+    $("#product_yarn").click(function(){
+        $("#new-main-right").load("/web/htmls/product_yarn.html");
+    });
+    $("#product_fabric").click(function(){
+        $("#new-main-right").load("/web/htmls/product_fabric.html");
+    });
+    $("#product_garments").click(function(){
+        $("#new-main-right").load("/web/htmls/product_garments.html");
+    });
 </script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            color: white;
+            font-size: 12px;
+        }
+
+        .movie {
+            display: flex;
+        }
+
+        .movie:hover {
+            transform: scale(1.25, 1.25);
+        }
+
+        .movie > span {
+            position: absolute;
+        }
+
+        .movie > img {
+            height: 200px;
+            width: 142px;
+        }
+
+        .title {
+            width: 142px;
+            height: 40px;
+            overflow: hidden;
+            top: 160px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .score {
+            width: 140px;
+            text-align: right;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="movie">
+    <img src="https://img1.doubanio.com/view/movie_poster_cover/mpst/public/p2163632289.jpg">
+    <span class="title" title="久石让在武道馆：与宫崎骏动画一同走过的25年">久石让在武道馆：与宫崎骏动画一同走过的25年</span>
+    <span class="score">9.7</span>
+    <span class="date">2008-08-05</span>
+</div>
+</body>
+</html>
+
+<script>
+    url = "/getMovie.php";
+    fetch(url).then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        console.log(data);
+
+
+    }).catch(function (e) {
+        console.log("Oops, error");
+    });
+
+
+    var rander = function (m) {
+        var div = document.createElement('div');
+        div.classList.add('movie');
+        div.innerHTML = '<img src="' + m.cover_url + '">' +
+            '<span class="title" title="' + m.title + '">' + m.title + '</span>' +
+            '<span class=""></span>';
+    }
+
+</script>

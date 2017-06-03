@@ -7,17 +7,27 @@
         body {
             margin: 0;
             padding: 0;
-            display: flex;
+
             color: white;
             font-size: 12px;
+            background-color: dimgray;
+
+            height:100%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .movie {
             display: flex;
+            height: 200px;
+            width: 142px;
         }
 
         .movie:hover {
-            transform: scale(1.25, 1.25);
+            transform: scale(1.05, 1.05);
+            z-index: 100;
         }
 
         .movie > span {
@@ -31,27 +41,24 @@
 
         .title {
             width: 142px;
-            height: 40px;
+            height: 48px;
             overflow: hidden;
-            top: 160px;
+            margin-top: 152px;
             background-color: rgba(0, 0, 0, 0.7);
         }
 
         .score {
             width: 140px;
             text-align: right;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding-right: 2px;
         }
 
 
     </style>
 </head>
 <body>
-<div class="movie">
-    <img src="https://img1.doubanio.com/view/movie_poster_cover/mpst/public/p2163632289.jpg">
-    <span class="title" title="久石让在武道馆：与宫崎骏动画一同走过的25年">久石让在武道馆：与宫崎骏动画一同走过的25年</span>
-    <span class="score">9.7</span>
-    <span class="date">2008-08-05</span>
-</div>
+
 </body>
 </html>
 
@@ -60,11 +67,14 @@
     fetch(url).then(function (response) {
         return response.json();
     }).then(function (data) {
-        console.log(data);
+        var dom=document.getElementsByTagName('body')[0];
+        for(var i=0;i<data.length;i++){
+            dom.appendChild(rander(data[i]));
+        }
 
 
     }).catch(function (e) {
-        console.log("Oops, error");
+        console.error(e);
     });
 
 
@@ -73,7 +83,9 @@
         div.classList.add('movie');
         div.innerHTML = '<img src="' + m.cover_url + '">' +
             '<span class="title" title="' + m.title + '">' + m.title + '</span>' +
-            '<span class=""></span>';
+            '<span class="score">' + m.score + '</span>' +
+            '<span class="date">' + m.release_date + '</span>';
+        return div;
     }
 
 </script>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全顺集团</title>
+    <link rel="stylesheet" href="/web/plugin/normalize.css">
+    <link rel="stylesheet" href="/web/plugin/index.css">
+</head>
+<body>
+<div id="main">
+    <div id="head">
+        <div id="logo">
+            <img src="/web/image/logo.jpg" alt="">
+        </div>
+        <div id="week"></div>
+    </div>
+    <div id="tags">
+        <div class="tag"><a href="/web/index.html">首页</a></div>
+        <div class="tag"><a href="/web/introduce.html">集团简介</a></div>
+        <div class="tag"><a href="/web/news.html">新闻中心</a></div>
+        <div class="tag"><a href="/web/product.html">产品中心</a></div>
+        <div class="tag"><a href="/web/recruit.html">人才招聘</a></div>
+        <div class="tag"><a href="/web/content.html">联系我们</a></div>
+    </div>
+    <div id="images">
+        <img style="width: auto;height: auto;" src="/web/image/news.jpg" alt="">
+    </div>
+    <div id="new-body">
+
+        <div id="new-top"></div>
+        <div id="new-main">
+            <div id="new-main-left">
+                <div class="left-tag">新闻中心</div>
+                <div class="left-tag-two" id="news_company">集团新闻</div>
+                <div class="left-tag-two" id="news_industry">行业资讯</div>
+            </div>
+            <div id="new-main-right">
+                <div id="new-title"></div>
+                <div id="new-time"></div>
+                <div id="new-message"></div>
+            </div>
+        </div>
+
+    </div>
+    <div id="foot">
+        <span>联系方式</span>
+        <span><a href="www.yalekids.cn">童装定制官网</a></span>
+        <span><a href="https://shop124524846.taobao.com">童装商城</a></span>
+        <span><a href="https://shop68290887.taobao.com/">淘宝工厂店</a></span>
+        <span><a href="https://weidian.com/?userid=976200154&wfr=c">yalekids微店</a></span>
+        <span class="float-right">版权所有</span>
+        <span class="float-right">全顺集团</span>
+        <span class="float-right">网站备份号</span>
+    </div>
+
+</div>
+</body>
+</html>
+
+<script src="plugin/jquery-3.1.1.min.js"></script>
+<script>
+
+    Date.prototype.format = function(format){
+        var o = {
+            "M+" : this.getMonth()+1, //month
+            "d+" : this.getDate(), //day
+            "h+" : this.getHours(), //hour
+            "m+" : this.getMinutes(), //minute
+            "s+" : this.getSeconds(), //second
+            "q+" : Math.floor((this.getMonth()+3)/3), //quarter
+            "S" : this.getMilliseconds() //millisecond
+        };
+
+        if(/(y+)/.test(format)) {
+            format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+        }
+
+        for(var k in o) {
+            if(new RegExp("("+ k +")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+            }
+        }
+        return format;
+    };
+    $("#week").html(new Date().format("yyyy年MM月dd日"));
+
+
+    var createNews = function (data) {
+        var time = data.create_time.split(" ")[0];
+        var str = '<div class="new">' +
+            '<div class="new-title">' +
+            '<a href="/web/news.html?id=' + data.id + '">' + data.title + '</a>' +
+            '</div>' +
+            '<div class="new-time" style="float: right">' + time + '</div>' +
+            '</div>';
+
+        return str;
+    };
+    $("#new-main-right").load("/web/htmls/news_company.html");
+
+    $("#news_company").click(function(){
+        $("#new-main-right").load("/web/htmls/news_company.html");
+    });
+    $("#news_industry").click(function(){
+        $("#new-main-right").load("/web/htmls/news_industry.html");
+    });
+</script>

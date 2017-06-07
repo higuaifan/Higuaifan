@@ -49,7 +49,7 @@ def movie_insert(m):
     cur.close()
 
 
-search_type = 1
+search_type = 24
 search_max = 100
 search_min = 90
 search_start = 0

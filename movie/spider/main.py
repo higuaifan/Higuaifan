@@ -44,26 +44,36 @@ def movie_insert(m):
         m['title'].encode('utf-8'), m['score'].encode('utf-8'), str_actor, m['release_date'].encode('utf-8'),
         m['cover_url'].encode('utf-8'), str_type, str_regions))
         conn.commit()
-    except EnvironmentError:
+    except:
         print EnvironmentError
     cur.close()
 
+def get_movie(t,max,min,start,limit):
+    url = 'https://movie.douban.com/j/chart/top_list?type=' + str(t) + '&interval_id=' + str(
+        max) + '%3A' + str(min) + '&action=&start=' + str(start) + '&limit=' + str(limit)
 
-search_type = 24
+    print url
+
+    data = requests.get(url=url)
+
+    arr = data.json()
+
+    for movie in arr:
+        movie_print(movie)
+        movie_insert(movie)
+
+search_type = 31
 search_max = 100
 search_min = 90
 search_start = 0
 search_limit = 20
 
-url = 'https://movie.douban.com/j/chart/top_list?type=' + str(search_type) + '&interval_id=' + str(
-    search_max) + '%3A' + str(search_min) + '&action=&start=' + str(search_start) + '&limit=' + str(search_limit)
 
-print url
 
-data = requests.get(url=url)
+get_movie(search_type,search_max,search_min,search_start,search_limit)
 
-arr = data.json()
 
-for movie in arr:
-    movie_print(movie)
-    movie_insert(movie)
+
+while search_type>0:
+    get_movie(search_type, search_max, search_min, search_start, search_limit)
+    search_type -= 1

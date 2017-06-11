@@ -21,8 +21,8 @@
 
         .movie {
             display: flex;
-            height: 200px;
-            width: 142px;
+            height: 400px;
+            width: 284px;
         }
 
         .movie:hover {
@@ -35,23 +35,27 @@
         }
 
         .movie > img {
-            height: 200px;
-            width: 142px;
+            height: 400px;
+            width: 284px;
         }
 
         .title {
-            width: 142px;
+            width: 284px;
             height: 48px;
             overflow: hidden;
-            margin-top: 152px;
+            margin-top: 352px;
             background-color: rgba(0, 0, 0, 0.7);
         }
 
         .score {
-            width: 140px;
+            width: 274px;
             text-align: right;
             background-color: rgba(0, 0, 0, 0.7);
             padding-right: 2px;
+        }
+        .score,.date{
+            display: inline-block;
+            padding: 5px;
         }
 
 
@@ -63,7 +67,7 @@
 </html>
 
 <script>
-    url = "/getMovie.php";
+    url = "../getMovie.php";
     fetch(url).then(function (response) {
         return response.json();
     }).then(function (data) {
@@ -82,10 +86,17 @@
         var div = document.createElement('div');
         div.classList.add('movie');
         div.innerHTML = '<img src="' + m.cover_url + '">' +
-            '<span class="title" title="' + m.title + '">' + m.title + '</span>' +
+            '<span class="title" title="' + m.title + '">(' +m.types+') '+ m.title + '</span>' +
             '<span class="score">' + m.score + '</span>' +
             '<span class="date">' + m.release_date + '</span>';
+        div.addEventListener('click',function(){
+            jump(m.title);
+        });
         return div;
+    };
+
+    var jump=function(title){
+        window.open('http://www.bttt.la/s.php?q='+title+'&sitesearch=www.bttt.la&domains=bttt.la&hl=zh-CN&ie=UTF-8&oe=UTF-8');
     }
 
 </script>

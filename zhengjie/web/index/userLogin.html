@@ -79,6 +79,7 @@
 <script src="../ui/SweetAlert/sweetalert.min.js"></script>
 
 <script>
+    // 登陆事件
     $("#login").click(function(){
         var data = {'user': $("#user").val(), 'password': $("#pwd").val()};
 
@@ -119,6 +120,9 @@
         });
     });
 
+
+
+    //切换的事件
     $("#userB").click(function(){
         $("#main").show();
         $("#admin").hide();

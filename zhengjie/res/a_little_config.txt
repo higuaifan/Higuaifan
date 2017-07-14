@@ -1,4 +1,4 @@
-jdbcUrl = jdbc:mysql://localhost:3306/zhenjie?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
-user = root
-password = root
+jdbcUrl = jdbc:mysql://rm-wz9h86151kd3mlx1io.mysql.rds.aliyuncs.com:3306/zhenjie?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+user = zxmysql
+password = ZX123456zx!
 devMode = true

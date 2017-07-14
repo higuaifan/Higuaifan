@@ -130,6 +130,7 @@
             '    </tr>'
     };
 
+    //加载表
     $.get("/student/index", function (data) {
         for (var d in data) {
             $("#studentTbody").append(userTable(data[d]));
@@ -148,7 +149,7 @@
 
             for (var i = 0; i < text.length; i++) {
                 var b = text[i];
-                var html = b.innerHTML.replace(/ /g, '');
+                var html = b.innerHTML.replace(/ /g, '');//取值
                 b.innerHTML = '<div class="ui input saveText"><input type="text" value="' + html + '"></div>';
             }
 

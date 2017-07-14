@@ -62,6 +62,7 @@
         for (var i = 0; i < data.length; i++) {
             $('#rateTbody').append(appendTr(data[i]));
         }
+        // 星星
         $('.ui.rating').rating({
             initialRating: 0,
             maxRating: 5
@@ -73,7 +74,6 @@
             var list = $('.ui.rating');
             var count = 0;
             var len=list.length;
-//            var len = 2;
             for (var i = 0; i < len; i++) {
                 var id = $(list[i]).parent().prev()[0].getAttribute('data-id');
                 var obj = {rater: id - 0, score: getStars($(list[i]))};
@@ -81,7 +81,6 @@
                     type: 'post',
                     url: '/rate/insert',
                     data: obj,
-//                    async: false,
                     success: function (res) {
                         count++;
                         if (count === len) {

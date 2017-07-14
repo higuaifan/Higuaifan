@@ -31,11 +31,11 @@ def fh_get_type_and_link(url):
     #     continue
 
 
-def insert(title, img, url):
+def insert(title, img, url,price):
     cur = conn.cursor()
-    sql = 'insert into shopping(title,image,url,`from`) values (%s,%s,%s,0)'
+    sql = 'insert into shopping(title,image,url,`from`,price) values (%s,%s,%s,0,%s)'
     try:
-        cur.execute(sql, (title, img, url))
+        cur.execute(sql, (title, img, url,price))
         conn.commit()
     except:
         print "error"
@@ -53,7 +53,13 @@ def get(json_data):
         print item_url
         short_name = i_name['shortName']
         print short_name
+<<<<<<< HEAD
         insert(short_name, image, item_url)
+=======
+        print price
+        
+        insert(short_name, image, item_url,price)
+>>>>>>> 7af75cacd007d26215dfb4fa28e2435769ab8915
 
 
 fh_get_type_and_link('https://ju.taobao.com/')

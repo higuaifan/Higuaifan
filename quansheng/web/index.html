@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全顺集团</title>
+    <link rel="stylesheet" href="/web/plugin/normalize.css">
+    <link rel="stylesheet" href="/web/plugin/index.css">
+</head>
+<body>
+<div id="main">
+    <div id="head">
+        <div id="logo">
+            <img src="/web/image/logo.jpg" alt="">
+        </div>
+        <div id="week">2017年5月10日 星期三</div>
+    </div>
+    <div id="tags">
+        <div class="tag"><a href="/web/index.html">首页</a></div>
+        <div class="tag"><a href="/web/introduce.html">集团简介</a></div>
+        <div class="tag"><a href="/web/news.html">新闻中心</a></div>
+        <div class="tag"><a href="/web/product.html">产品中心</a></div>
+        <div class="tag"><a href="/web/recruit.html">人才招聘</a></div>
+        <div class="tag"><a href="/web/content.html">联系我们</a></div>
+    </div>
+    <div id="images">
+        <img src="/web/image/background.png" alt="">
+        <img style="display: none;" src="/web/image/background2.png" alt="">
+    </div>
+    <div id="message">
+        <div id="left">
+            <div id="abstract">
+
+            </div>
+            <div id="left-more">
+                <div class="messages">
+                    <div>
+                        <div class="message-title title">集团简介</div>
+                        <div id="message-title-detail">
+                            全顺集团有限公司前身是浙江全顺丝线有限公司，成立于1999年8月,地处中国领带之乡，全球最大的领带生产基地及越剧发源地——嵊州市。目前，全顺集团已成为集...
+                        </div>
+                    </div>
+                </div>
+                <div class="messages">
+                    <img src="http://www.maidilang.com/images/img_001.gif" alt="">
+                    <div>
+                        <div class="message-title title">企业文化 ></div>
+                        <div class="message-detail">工匠传承，艺术生活！商业为本，商道为尊！从商人员...</div>
+                    </div>
+                </div>
+                <div class="messages">
+                    <img src="http://www.maidilang.com/images/img_001.gif" alt="">
+                    <div>
+                        <div class="message-title title">企业荣誉 ></div>
+                        <div class="message-detail"> 2004年—至今获年度AAA级企业信用;2005年旗下“全盛...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mid">
+            <div id="news" class="title">新闻中心</div>
+            <div id="mid-image">
+                <img src="http://www.maidilang.com/upfiles/image/2012/01/04/201201040531494603.jpg" alt="">
+                <img class="hide" src="http://www.maidilang.com/upfiles/image/2012/02/17/201202171458344414.jpg" alt="">
+            </div>
+            <div class="news-title title">集团新闻</div>
+            <div class="news" id="company_news">
+
+            </div>
+            <div class="news-title title">行业资讯</div>
+            <div class="news" id="industry_news">
+
+            </div>
+        </div>
+        <div id="right">
+            <div class="messages">
+                <img src="/web/image/1.JPG" alt="">
+                <div>
+                    <div class="message-title title">面料</div>
+                    <div class="message-detail">面料产品介绍详情点击</div>
+                </div>
+            </div>
+            <div class="messages">
+                <img src="/web/image/3.jpg" alt="">
+                <div>
+                    <div class="message-title title">领带</div>
+                    <div class="message-detail">领带产品介绍详情点击</div>
+                </div>
+            </div>
+            <div class="messages">
+                <img src="/web/image/4.jpg" alt="">
+                <div>
+                    <div class="message-title title">纱线</div>
+                    <div class="message-detail">纱线产品介绍详情点击</div>
+                </div>
+            </div>
+            <div class="messages">
+                <img src="/web/image/2.jpg" alt="">
+                <div>
+                    <div class="message-title title">童装</div>
+                    <div class="message-detail">童装产品介绍详情点击</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="foot">
+        <span>联系方式</span>
+        <span><a href="www.yalekids.cn">童装定制官网</a></span>
+        <span><a href="https://shop124524846.taobao.com">童装商城</a></span>
+        <span><a href="https://shop68290887.taobao.com/">淘宝工厂店</a></span>
+        <span><a href="https://weidian.com/?userid=976200154&wfr=c">yalekids微店</a></span>
+        <span class="float-right">版权所有</span>
+        <span class="float-right">全顺集团</span>
+        <span class="float-right">网站备份号</span>
+    </div>
+
+</div>
+</body>
+</html>
+
+<script src="plugin/jquery-3.1.1.min.js"></script>
+<script>
+    Date.prototype.format = function(format){
+        var o = {
+            "M+" : this.getMonth()+1, //month
+            "d+" : this.getDate(), //day
+            "h+" : this.getHours(), //hour
+            "m+" : this.getMinutes(), //minute
+            "s+" : this.getSeconds(), //second
+            "q+" : Math.floor((this.getMonth()+3)/3), //quarter
+            "S" : this.getMilliseconds() //millisecond
+        };
+
+        if(/(y+)/.test(format)) {
+            format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+        }
+
+        for(var k in o) {
+            if(new RegExp("("+ k +")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+            }
+        }
+        return format;
+    };
+    $("#week").html(new Date().format("yyyy年MM月dd日"));
+
+    $.get("/php/getNewsTypeZero.php", function (res) {
+        var data = res.data;
+        for (var i = 0; i < 4; i++) {
+            $("#company_news").append(createNews(data[i]));
+        }
+    });
+    $.get("/php/getNewsTypeOne.php", function (res) {
+        var data = res.data;
+        for (var i = 0; i < 4; i++) {
+            $("#industry_news").append(createNews(data[i]));
+        }
+    });
+
+
+    var createNews = function (data) {
+        var time = data.create_time.split(" ")[0];
+        console.log(time);
+        console.log(time);
+        var str = '<div class="new">' +
+            '<div class="new-title">' +
+            '<a href="/web/news.html?id=' + data.id + '">' + data.title + '</a>' +
+            '</div>' +
+            '<div class="new-time" style="float: right">' + time + '</div>' +
+            '</div>';
+
+        return str;
+    };
+
+    var showFlag = 0;
+    var background = function () {
+        if (showFlag == 0) {
+            showFlag = 1;
+            $("#images img").eq(0).hide();
+            $("#images img").eq(1).fadeIn();
+        } else if (showFlag == 1) {
+            showFlag = 0;
+            $("#images img").eq(1).hide();
+            $("#images img").eq(0).fadeIn();
+        }
+    };
+
+
+    var t1 = window.setInterval(background, 5000);
+
+</script>

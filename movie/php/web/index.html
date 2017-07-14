@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+
+            color: white;
+            font-size: 12px;
+            background-color: dimgray;
+
+            height:100%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .movie {
+            display: flex;
+            height: 400px;
+            width: 284px;
+        }
+
+        .movie:hover {
+            transform: scale(1.05, 1.05);
+            z-index: 100;
+        }
+
+        .movie > span {
+            position: absolute;
+        }
+
+        .movie > img {
+            height: 400px;
+            width: 284px;
+        }
+
+        .title {
+            width: 284px;
+            height: 48px;
+            overflow: hidden;
+            margin-top: 352px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .score {
+            width: 274px;
+            text-align: right;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding-right: 2px;
+        }
+        .score,.date{
+            display: inline-block;
+            padding: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    url = "../getMovie.php";
+    fetch(url).then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        var dom=document.getElementsByTagName('body')[0];
+        for(var i=0;i<data.length;i++){
+            dom.appendChild(rander(data[i]));
+        }
+
+
+    }).catch(function (e) {
+        console.error(e);
+    });
+
+
+    var rander = function (m) {
+        var div = document.createElement('div');
+        div.classList.add('movie');
+        div.innerHTML = '<img src="' + m.cover_url + '">' +
+            '<span class="title" title="' + m.title + '">(' +m.types+') '+ m.title + '</span>' +
+            '<span class="score">' + m.score + '</span>' +
+            '<span class="date">' + m.release_date + '</span>';
+        div.addEventListener('click',function(){
+            jump(m.title);
+        });
+        return div;
+    };
+
+    var jump=function(title){
+        window.open('http://www.bttt.la/s.php?q='+title+'&sitesearch=www.bttt.la&domains=bttt.la&hl=zh-CN&ie=UTF-8&oe=UTF-8');
+    }
+
+</script>

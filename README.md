@@ -3,9 +3,12 @@
 ![logo](higuaifan.svg)
 <br/>
 
-- <g-emoji class="g-emoji" alias="monocle_face" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f9d0.png">🧐</g-emoji> **️I'm the author of shuimo design** 
-- <g-emoji class="g-emoji" alias="sunglasses" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60e.png">😎</g-emoji> **I want to be someone who dreams of eating and dying and doing cool stuff**
-- <g-emoji class="g-emoji" alias="heart_eyes" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60d.png">😍</g-emoji> **I love geek things**
+🤔️ ️I'm the author of shuimo design
+<br/>
+😎 I want to be someone who dreams of eating and dying and doing cool stuff
+<br/>
+😍 I love geek things
+<br/>
 
 <!-- Light Mode -->
 <div align="center"> 

@@ -3,12 +3,7 @@
 ![logo](higuaifan.svg)
 <br/>
 
-🤔️ ️I'm the author of shuimo design
-<br/>
-😎 I want to be someone who dreams of eating and dying and doing cool stuff
-<br/>
-😍 I love geek things
-<br/>
+🤔️ ️I'm the author of shuimo design.
 
 <!-- Light Mode -->
 <div align="center"> 
